@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<meta charset="UTF-8">
+<script>
+    var schemesJson = JSON.parse('{{schemesJson | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById('welcomeLabel').innerHTML = "Latest Schemes";
+        setSchemeData();
+    }
+    function setSchemeData() {
+
+        var listTags = "";
+        for (var i = 0; i < schemesJson.length; i++) {
+            listTags = listTags + 
+                "<li class='schemes'>" +
+                "<b>" + schemesJson[i]["schemeHeading"] + "</b></br>" +
+                "<label style='width:70%;position:absolute'>"+schemesJson[i]["schemeDescription"] + "</label></br></br>" +
+                "<img src='data:image/png;charset=utf-8;base64," + schemesJson[i]["schemePhoto"] +"' style='object-fit: contain;width:170px;top: 20px;left:10px;position: relative;'><div class='text'>"+
+                "</li>" ;
+        }
+        document.getElementById("schemeList").innerHTML = listTags;
+    }
+
+
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label id="welcomeLabel" class="welcomeLabel"></label>
+    <div class="sub-body-frame">
+        <div id="faqdata" class="faqdata">
+            <ul id="schemeList" class="schemeList"></ul>
+            <label style="color:#05153F;font-size: 16px;font-weight: bold;">*** Please call customer care to know more about our schemes</label>
+        </div>
+    </div>
+</div>
+{% endblock content%}

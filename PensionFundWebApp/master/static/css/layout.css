@@ -1,0 +1,428 @@
+.hamburger-menu {
+    top: 30px;
+    bottom: 30px;
+    left: 30px;
+    width: 100px;
+    background-color: #05153F;
+    position: absolute;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.hamburger-menu-admin {
+    top: 30px;
+    bottom: 30px;
+    left: 30px;
+    width: 220px;
+    background-color: #05153F;
+    position: absolute;
+    border-radius: 20px 0px 0px 20px;
+}
+
+
+.app-details {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+
+.app-name-label {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 10px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.main-menu-box {
+    display: block;
+    position: absolute;
+    width: 95px;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    bottom: 0px;
+}
+
+.main-menu-box-admin {
+    display: block;
+    position: absolute;
+    width: 220px;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px;
+    bottom: 0px;
+}
+
+.main-menu-box-admin li {
+    height: 40px;
+    width: 100%;
+    display: block;
+    top: 5px;
+}
+
+.main-menu-box-admin a:hover {
+    background-color: aliceblue;
+    color: #05153F;
+}
+
+.main-menu-box li {
+    height: 70px;
+    width: 100%;
+    display: block;
+    top: 5px;
+
+
+}
+
+.main-menu-box-admin .section {
+    height: 40px;
+    width: 100%;
+    display: block;
+    top: 5px;
+    border-bottom: 2px dashed #ffffff;
+}
+
+
+.main-menu-box-admin .section a:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.img-menu {
+    width: 20px;
+    height: 20px;
+    contain: content;
+}
+
+.ham-menu-item {
+    display: block;
+    padding: 10px 24px;
+    color: #fff;
+    font-family: 'Ubuntu-Medium';
+    font-size: 10px;
+    font-weight: 400;
+    text-decoration: none;
+    transition-duration: .25s;
+    background-color: transparent;
+    text-align: left;
+}
+
+.ham-menu-item-admin {
+    display: block;
+    padding: 10px 24px;
+    color: #fff;
+    font-family: 'Ubuntu-Regular';
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    transition-duration: .25s;
+    background-color: transparent;
+    text-align: left;
+
+}
+
+.ham-menu-item-admin-Section {
+    display: block;
+    padding: 10px 10px;
+    color: #fff;
+    font-family: 'Ubuntu-Medium';
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    transition-duration: .25s;
+    background-color: transparent;
+    text-align: left;
+
+}
+
+.menu-label {
+    top: 5px;
+    position: relative;
+}
+
+.main-menu-box li:hover {
+    border-left: 5px solid #ffffff;
+}
+
+.right-frame {
+    top: 30px;
+    bottom: 30px;
+    left: 130px;
+    right: 30px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 0px 20px 20px 0px;
+    background-image: linear-gradient(90deg, #ffffff, #324062);
+}
+
+.right-frame-admin {
+    top: 30px;
+    bottom: 30px;
+    left: 250px;
+    right: 30px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 0px 20px 20px 0px;
+    background-image: linear-gradient(90deg, #ffffff, #324062);
+}
+
+
+.main-frame {
+    top: 10px;
+    bottom: 50px;
+    left: 20px;
+    right: 10px;
+    background-color: transparent;
+    position: absolute;
+    border-radius: 20px 20px 20px 20px;
+
+}
+
+.main-frame-admin {
+    top: 10px;
+    bottom: 30px;
+    left: 20px;
+    right: 10px;
+    background-color: transparent;
+    position: absolute;
+    border-radius: 20px 20px 20px 20px;
+
+}
+
+.footer-menu {
+    bottom: 0px;
+    height: 50px;
+    left: 0px;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+}
+
+.footer-menu-box {
+    position: absolute;
+    display: inline;
+    height: 100%;
+    margin: 0;
+    list-style: none;
+    background-color: transparent;
+}
+
+.footer-menu-box li {
+    float: left;
+    padding-right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+.footer-menu-item {
+    color: #05153F;
+    font-family: 'Ubuntu-Medium';
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    background-color: transparent;
+    text-align: center;
+}
+
+.footer-menu-item:hover {
+
+    text-decoration: underline;
+}
+
+.logout-frame {
+    width: 10%;
+    right: 0px;
+    height: 70px;
+    top: 0%;
+    overflow: hidden;
+    position: absolute;
+    background-color: transparent;
+}
+
+
+.logout-frame .button {
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 30px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+
+}
+
+.logout-frame .buttonLogout {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+    width: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    position: absolute;
+}
+
+.logout-frame .buttonLogout:hover {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.logout-frame .buttonLogout:focus {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.alertMessagesFrame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+
+.chatbot {
+    width: 180px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.chatbotImage {
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.chatBotText {
+    left: 60px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    object-fit: contain;
+    line-height: 30px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #05153F;
+}
+
+.chatBotText1 {
+    color: #ffffff;
+}
+
+.chatbox-Frame {
+    height: 70%;
+    width: 600px;
+    position: absolute;
+    bottom: 55px;
+    right: 25px;
+    background-color: #05153F;
+    border-radius: 10px;
+    display: none;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    color: white;
+
+}
+
+.closeImage {
+    right: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.userMessage {
+    color: #05153F;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    text-align: right;
+    line-height: 20px;
+    right:10px;
+    position: relative;
+    padding: 10px 0px 10px 0px;
+}
+
+.userMessage span {
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.botMessage {
+    color: #05153F;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    text-align: left;
+    line-height: 20px;
+    left:10px;
+    position: relative;
+    padding: 10px 0px 10px 0px;
+}
+
+.botMessage span {
+    background-color: gray;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+#textInput {    
+    border-bottom: 3px solid #05153F;
+    border-radius: 0px 0px 10px 10px;
+    background-color: white;
+    width: 98%;
+    border: none;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #05153F;
+    position: absolute;
+    height: 90%;
+  }

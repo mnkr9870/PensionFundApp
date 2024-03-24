@@ -1,0 +1,101 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    window.onload = function () {
+        var flowType = '{{flowType}}';
+        if (flowType == 'dashboard') {
+            document.getElementById('customer-personal-details').style.display = 'none';
+        }
+        else if (flowType == 'search') {
+            document.getElementById('customer-personal-details').style.display = 'block';
+        }
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F"; 
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle ="italic";      
+    }    
+    function cancelUpdateProfileDetails(){
+        document.getElementById('customer-personal-details').style.display = 'none';
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Customer Management >> Personal Details</label>
+                    <div class="div1">
+                        <label class="sectionHeader">Manage Personal Details</label>
+                        <div class="textbox username">
+                            <form action="{{ url_for('adminDashboard') }}" method="post">
+                                <label>Search customer</label>
+                                <input type="label" hidden name="flowType" value="search">
+                                <input type="text" name="userKey" required="required" value="{{searchKey}}"
+                                    placeholder="Search by customer's email">
+                                <button class="button buttonSubmit" type="submit">Search</button>
+                            </form>
+
+                        </div>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="flash-Message">{{ message }}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div id="customer-personal-details" class="customer-personal-details">
+                            <form id="update-form" action="{{ url_for('adminDashboard') }}" method="post"
+                                enctype="multipart/form-data">
+                                <ul class="personal-details-box">
+                                    <li>
+                                        <label class="labelHeading">First Name</label><br>
+                                        <input type="text" class="inputlabelValue" id="fname" name="fname"
+                                            value="{{firstName}}" pattern="[a-zA-Z ]+" title="Please enter only alphabets(a-z, A-Z)"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Last Name</label><br>
+                                        <input type="text" class="inputlabelValue" id="lname" name="lname"
+                                            value="{{lastName}}" pattern="[a-zA-Z ]+" title="Please enter only alphabets(a-z, A-Z)"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Email Address</label><br>
+                                        <input type="email" class="inputlabelValue" id="email" name="email"
+                                            value="{{email}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">NI Number</label><br>
+                                        <input type="text" class="inputlabelValue" id="ni" name="ni"
+                                            value="{{ni}}" maxlength="9" pattern="[A-Z]{2}[0-9]{6}[A-Z]{1}" title="Ex: XY123456Z"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Mobile Number</label><br>
+                                        <input type="number" class="inputlabelValue" id="mobile" name="mobile"
+                                            value="{{mobile}}" maxlength="11" pattern="[0-9]{11}" title="Ex:07XXXXXXXXX"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Date of Birth</label><br>
+                                        <input type="date" class="inputlabelValue" id="dob" name="dob"
+                                            value="{{dob}}"></label>
+                                    </li>
+                                </ul>
+                                <input type="label" hidden name="flowType" value="update">
+                                <input type="label" hidden name="userId" value="{{id}}">
+                            </form>
+                            <input type="Submit" name="submit" form="update-form" id="update-form-Button"
+                                class="button update-Details-Form-Button" value="Update Details">
+                            <button id="cancel-Button" onclick="cancelUpdateProfileDetails()"
+                                class="button update-Details-Button">Cancel</button>
+                        </div>
+                        <div class="info">
+                            <div class="iButton"><label>i</label></div>
+                            <label class="infoText">To manage any customer's personal details, please search by
+                                email.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

@@ -1,0 +1,271 @@
+.main-body {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.welcomeLabel {
+    text-align: left;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+
+.sub-body-frame {
+    top: 60px;
+    left:0px;
+    right:10px;
+    bottom: 10px;
+    display: flex;
+    position: absolute;
+}
+
+.frame {
+    float: left;
+    background-color: transparent;
+}
+
+
+.frame1-payments {    
+    width:40%
+}
+.frame2-payments {    
+    width:60%;
+    padding-left: 20px;
+}
+.pension-payments{
+    height: 80%;
+    top:10px;
+    bottom:0px;
+    position: relative;
+    overflow: auto;
+    text-align:justify;
+}
+.pension-payments-table{
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0px;
+    bottom: 0px;
+    list-style: none;
+}
+.pension-payments-table li {
+    height: 75px;
+    width: 90%;
+    display: block;
+    left:50%;
+    transform: translateX(-50%);
+    
+    border-bottom: 2px solid #05153F;
+    position: relative
+}
+
+.pension-payments-table  .top-Row{
+    top:0px;
+    height: 50%;
+    width: 95%;
+    display: block;
+    padding-top: 10px;
+}
+.pension-payments-table  .bottom-Row{
+    bottom:0px;
+    height: 50%;
+    width: 95%;
+    display: block;
+}
+
+.pension-payments-table  .lblFrom{
+    left:10px;
+    width: 50%;    
+    display: block;
+    position: absolute;   
+    
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #05153F;
+}
+
+.pension-payments-table  .lblAmount{
+    right:10px;
+    width: 50%;    
+    display: block;
+    position: absolute; 
+    text-align: right;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #05153F;
+}
+.pension-payments-table  .lblDesc{
+    left:10px;
+    width: 50%;    
+    display: block;
+    position: absolute;  
+    
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    color: gray;
+}
+.pension-payments-table  .lblDate{
+    right:10px;
+    width: 50%;    
+    display: block;
+    position: absolute;
+    text-align: right;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    color: gray; 
+}
+
+.payment-details-table {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 70%;
+    left: 12px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline-start: 12px;
+}
+
+.payment-details-table li {
+    height: 70px;
+    display: block;
+    top: 20px;
+}
+
+.payment-details-table li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.payment-details-table li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.sectionSubHeadingPayment{
+    width:95%;
+    left:50%;
+    transform: translateX(-50%);
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: gray;
+    position: relative;
+    top: 10px;
+}
+
+.infoPayments{
+    bottom: 20px;
+    height: 40px;
+    width: 55%;
+    text-align: center;
+    position: absolute;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: gray;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.iButtonPayments{
+    border-radius: 50%;
+    border: 2px solid #05153F;
+    background-color: #05153F;
+    color: #ffffff;
+    position: absolute;
+    left: 0px;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.iButtonPayments label{
+    top: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+}
+.infoTextPayments{
+    position : absolute;
+    left : 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.payments-Header-Message{
+    position:absolute;
+    left:50%;
+    transform :translateX(-50%);
+    top:150px;
+    width:100%;
+    text-align: center;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+.buttonDownload{
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    width: 30%;
+}

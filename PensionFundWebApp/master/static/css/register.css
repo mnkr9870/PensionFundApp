@@ -1,0 +1,352 @@
+.main-frame {
+    width: 80%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 20px gray;
+    box-shadow: 0 0 20px gray;
+}
+label{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+}
+.left-frame {
+    height: 100%;
+    width: 40%;
+    right: 0%;
+    background-color: #05153F;
+    position: absolute;
+}
+.img-home-ad1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    top: 30%
+}
+
+.lpf-label {
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    position: absolute;
+
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    word-wrap: break-word;
+
+    -webkit-text-fill-color: transparent;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.lpf-label-Reg{
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    position: absolute;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.right-frame {
+    height: 100%;
+    width: 60%;
+    left:0%;
+    background-color: white;
+    position: absolute;
+}
+
+.register-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 95%;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 20px;
+    color: black;
+}
+
+.register-frame h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: left;
+
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+.register-frame .textbox {
+    position: relative;
+}
+
+.register-frame .textbox input {
+    width: 100%;
+    padding: 10px 0;
+    height: 40px;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color:#000
+
+}
+
+.register-frame .gender{
+    width: 100%;
+    padding: 10px 0;
+    color: gray;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+}
+.register-frame .gender:hover {
+    border-color: #05153F;
+}
+
+
+.register-frame .gender:focus {
+    border-color: #05153F;
+}
+
+.register-frame .textbox input:hover {
+    border-color: #05153F;
+}
+
+
+.register-frame .textbox input:focus {
+    border-color: #05153F;
+}
+
+.register-frame .firstName{
+    width:40%;
+    top:90px;
+    left:40px;
+    position: absolute;
+}
+.register-frame .lastName{
+    width:40%;
+    top:90px;
+    right:40px;
+    position: absolute;
+}
+.register-frame .NI{
+    width:40%;
+    top:180px;
+    left:40px;
+    position: absolute;
+}
+.register-frame .mobile{
+    width:40%;
+    top:180px;
+    right:40px;
+    position: absolute;
+}
+.register-frame .gen{
+    width:40%;
+    top:270px;
+    left:40px;
+    position: absolute;
+}
+.register-frame .dob{
+    width:40%;
+    top:270px;
+    right:40px;
+    position: absolute;
+}
+.register-frame .email{    
+    top:360px;
+    left:40px;
+    right:40px;
+    position: absolute;
+}
+.register-frame .password{
+    
+    top:450px;
+    left:40px;
+    right:40px;
+    position: absolute;
+}
+.register-frame .confirmPassword{
+    width:40%;
+    top:450px;
+    right:40px;
+    position: absolute;
+}
+
+.button {
+    top:550px;
+    width: 60%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid gray;
+    color: gray;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+
+}
+
+.buttonRegister {
+    background-color: transparent;
+    color: gray;
+    border: 2px solid gray;
+}
+
+.buttonRegister:hover {
+    background-color: #05153F;
+    color: white;
+    border: 2px solid #05153F;
+}
+
+.buttonRegister:focus {
+    background-color: #05153F;
+    color: white;
+    border: 2px solid #05153F;
+}
+
+
+.login {
+    width: 100%;
+    top: 475px;
+    position: relative;
+
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+
+}
+
+.loginLink:link {
+    color: #05153F;
+    text-decoration: none;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.loginLink:visited {
+    color: #05153F;
+    text-decoration: none;
+}
+
+.loginLink:hover {
+    color: #05153F;
+    text-decoration: underline;
+}
+
+.loginLink:focus {
+    color: #05153F;
+    text-decoration: underline;
+}
+
+.cancel {
+    width: 100%;
+    top: 450px;
+    position: relative;
+
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+
+}
+
+.cancelLink:link {
+    color: #05153F;
+    text-decoration: none;    
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.cancelLink:visited {
+    color: #05153F;
+    text-decoration: none;
+}
+
+.cancelLink:hover {
+    color: #05153F;
+    text-decoration: underline;
+}

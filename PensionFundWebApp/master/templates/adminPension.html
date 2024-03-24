@@ -1,0 +1,101 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    window.onload = function () {
+        var flowType = '{{flowType}}';
+        if (flowType == 'main') {
+            document.getElementById('customer-personal-details').style.display = 'none';
+        }
+        else if (flowType == 'search') {
+            document.getElementById('customer-personal-details').style.display = 'block';
+        }
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F"; 
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle ="italic";
+    }
+    function cancelUpdateProfileDetails() {
+        document.getElementById('customer-personal-details').style.display = 'none';
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Customer Management >> Pension Details</label>
+                    <div class="div1">
+                        <label class="sectionHeader">Manage Pension Details</label>
+                        <div class="textbox username">
+                            <form action="{{ url_for('adminPension') }}" method="post">
+                                <label>Search customer</label>
+                                <input type="label" hidden name="flowType" value="search">
+                                <input type="text" name="userKey" required="required" value="{{searchKey}}"
+                                    placeholder="Search by customer's email">
+                                <button class="button buttonSubmit" type="submit">Search</button>
+                            </form>
+
+                        </div>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p id="flash-Message" class="flash-Message">{{ message }}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div id="customer-personal-details" class="customer-personal-details">
+                            <form id="update-form" action="{{ url_for('adminPension') }}" method="post"
+                                enctype="multipart/form-data">
+                                <ul class="personal-details-box">
+                                    <li>
+                                        <label class="labelHeading">Policy Name</label><br>
+                                        <input type="text" class="inputlabelValue" id="policyName" name="policyName"
+                                            value="{{policyName}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Policy Number</label><br>
+                                        <input type="text" class="inputlabelValue" id="policyNumber" name="policyNumber"
+                                            value="{{policyNumber}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Pension Fund</label><br>
+                                        <input type="number" class="inputlabelValue" id="pensionFund" name="pensionFund"
+                                            value="{{pensionFund}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Employee Contribution</label><br>
+                                        <input type="number" class="inputlabelValue" id="employeeContribution"
+                                            name="employeeContribution" value="{{employeeContribution}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Employer Contribution</label><br>
+                                        <input type="number" class="inputlabelValue" id="employerContribution"
+                                            name="employerContribution" value="{{employerContribution}}"></label>
+                                    </li>
+                                    <li>
+                                        <label class="labelHeading">Retirement Age</label><br>
+                                        <input type="number" class="inputlabelValue" id="retirementAge"
+                                            name="retirementAge" value="{{retirementAge}}"></label>
+                                    </li>
+                                </ul>
+                                <input type="label" hidden name="flowType" value="update">
+                                <input type="label" hidden name="userId" value="{{id}}">
+                            </form>
+                            <input type="Submit" name="submit" form="update-form" id="update-form-Button"
+                                class="button update-Details-Form-Button" value="Update Details">
+                            <button id="cancel-Button" onclick="cancelUpdateProfileDetails()"
+                                class="button update-Details-Button">Cancel</button>
+                        </div>
+                        <div class="info">
+                            <div class="iButton"><label>i</label></div>
+                            <label class="infoText">To manage any customer's pension details, please search by
+                                email.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

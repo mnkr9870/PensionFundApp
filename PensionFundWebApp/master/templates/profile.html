@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script>
+    window.onload=function(){
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById("personal-details").style.display = "block";
+        document.getElementById("update-personal-details").style.display = "none";
+    }
+    function updateProfileDetails() {
+        document.getElementById("personal-details").style.display = "none";
+        document.getElementById("update-personal-details").style.display = "block";
+
+        document.getElementById('fname').value='{{firstName}}';
+        document.getElementById('lname').value='{{lastName}}';
+        document.getElementById('email').value='{{email}}';
+        document.getElementById('mobile').value='{{mobile}}';
+        document.getElementById('dob').value='{{dob}}';
+        document.getElementById('ni').value='{{ni}}';
+    }
+    function cancelUpdateProfileDetails() {
+        document.getElementById("personal-details").style.display = "block";
+        document.getElementById("update-personal-details").style.display = "none";
+    }
+    var loadFile = function (event) {
+        var image = document.getElementById('profile-image-view');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label class="welcomeLabel">Personal Profile</label>
+    <div class="sub-body-frame">
+        <div id="personal-details" class="personal-details">
+            <ul class="personal-details-box">
+                <li>
+                    <label class="labelHeading">First Name</label><br>
+                    <label class="labelValue">{{firstName}}</label>
+                </li>
+                <li>
+                    <label class="labelHeading">Last Name</label><br>
+                    <label class="labelValue">{{lastName}}</label>
+                </li>
+                <li>
+                    <label class="labelHeading">Email Address</label><br>
+                    <label class="labelValue">{{email}}</label>
+                </li>
+                <li>
+                    <label class="labelHeading">NI Number</label><br>
+                    <label class="labelValue">{{ni}}</label>
+                </li>
+                <li>
+                    <label class="labelHeading">Mobile Number</label><br>
+                    <label class="labelValue">{{mobile}}</label>
+                </li>
+                <li>
+                    <label class="labelHeading">Date of Birth</label><br>
+                    <label class="labelValue">{{dob}}</label>
+                </li>
+            </ul>
+            <div class="profile-image-frame">
+                <div class="profile-image">
+                    <img src="data:image/png;charset=utf-8;base64,{{image}}">
+                </div>
+            </div>
+            <button id="update-Button" onclick="updateProfileDetails()" class="button update-Details-Button">
+                Change Profile Details
+            </button>
+        </div>
+        <div id="update-personal-details" class="update-personal-details">
+            <form id="update-form" action="{{ url_for('profile') }}" method="post" enctype="multipart/form-data">
+                <ul class="personal-details-box">
+                    <li>
+                        <label class="labelHeading">First Name</label><br>
+                        <input type="text" class="inputlabelValue" id="fname" name="fname" value="{{firstName}}" maxlength="20" pattern="[a-zA-Z ]+" title="Please enter only alphabets(a-z, A-Z)"></label>
+                    </li>
+                    <li>
+                        <label class="labelHeading">Last Name</label><br>
+                        <input type="text" class="inputlabelValue" id="lname" name="lname" value="{{lastName}}" maxlength="20" pattern="[a-zA-Z ]+" title="Please enter only alphabets(a-z, A-Z)"></label>
+                    </li>
+                    <li>
+                        <label class="labelHeading">Email Address</label><br>
+                        <label class="labelValue">{{email}}</label>
+                        
+                        <input type="email" class="inputlabelValue" id="email" name="email" value="{{email}}" hidden></label>
+                        
+                    </li>
+                    <li>
+                        <label class="labelHeading">NI Number</label><br>
+                        <label class="labelValue">{{ni}}</label>
+                        
+                        <input type="text" class="inputlabelValue" id="ni" name="ni" value="{{ni}}" maxlength="9" pattern="[A-Z]{2}[0-9]{6}[A-Z]{1}" title="Ex: XY123456Z" hidden></label>
+                        
+                    </li>
+                    <li>
+                        <label class="labelHeading">Mobile Number</label><br>
+                        <input type="text" class="inputlabelValue" id="mobile" name="mobile" value="{{mobile}}" maxlength="11" pattern="[0-9]{11}" title="Ex:07XXXXXXXXX"></label>
+                    </li>
+                    <li>
+                        <label class="labelHeading">Date of Birth</label><br>
+                        <label class="labelValue">{{dob}}</label>
+                        <input type="date" class="inputlabelValue" id="dob"name="dob" value="{{dob}}" hidden></label>
+                    </li>
+                </ul>
+
+                <div class="profile-image-frame">
+                    <div class="profile-image">
+                        <img id="profile-image-view" src="data:image/png;charset=utf-8;base64,{{image}}">
+                    </div>
+                    <div class="choose-image">
+                        <label for="select-file">
+                            Select Image                                                      
+                        <input id="select-file" type="file" form="update-form" name="image1" accept="image/png, image/jpeg"
+                            onchange="loadFile(event)">
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <input type="Submit" name="submit" form="update-form" id="update-form-Button" class="button update-Details-Form-Button" value="Update Details">                             
+            <button id="cancel-Button" onclick="cancelUpdateProfileDetails()" class="button update-Details-Button">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock content%}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<meta charset="UTF-8">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script>
+    
+    var contactDetails = JSON.parse('{{contactUsInfo | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById('welcomeLabel').innerHTML = "Support";
+
+        document.getElementById('email1').innerHTML = contactDetails[0]['email1'];
+        document.getElementById('email2').innerHTML = contactDetails[0]['email2'];
+        document.getElementById('phone1').innerHTML = contactDetails[0]['phone1'];
+        document.getElementById('phone2').innerHTML = contactDetails[0]['phone2'];
+        document.getElementById('address').innerHTML = contactDetails[0]['address'];
+    }
+    function initMap() {
+            // The location of LPF
+            const loc = { lat: 52.636879, lng: -1.139759 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: loc,
+            });
+            const marker = new google.maps.Marker({
+                position: loc,
+                map: map,
+            });
+        }
+
+        window.initMap = initMap;
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label id="welcomeLabel" class="welcomeLabel"></label>
+    <div class="sub-body-frame">
+        <div id="contactData" class="contactData">
+            <div class="sectionSubHeadingAdmin">Contact Details</div>
+            <ul class="contact-details-table">
+                <li>
+                    <label class="labelHeading">Email 1</label><br>
+                    <label id="email1" class="labelValue"></label>
+                </li>
+                <li>
+                    <label class="labelHeading">Email 2</label><br>
+                    <label id="email2" class="labelValue"></label>
+                </li>
+                <li>
+                    <label class="labelHeading">Phone 1</label><br>
+                    <label id="phone1" class="labelValue"></label>
+                </li>
+                <li>
+                    <label class="labelHeading">Phone 2</label><br>
+                    <label id="phone2" class="labelValue"></label>
+                </li>
+                <li>
+                    <label class="labelHeading">Adrress</label><br>
+                    <label id="address" class="labelValue"></label>
+                </li>
+            </ul>
+            <div id="map" class="map"></div>
+            <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGt7S-9MG2a8EWTNKunBa-yqb_K8Uvo00&callback=initMap&v=weekly"
+            defer></script>
+        </div>
+    </div>
+</div>
+{% endblock content%}

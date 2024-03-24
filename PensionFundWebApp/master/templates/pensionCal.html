@@ -1,0 +1,209 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script>
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        setHomeUI();
+    }
+    function showPensionPage(pensionType) {
+        if (pensionType == "1") {
+            document.getElementById("pension-Cal-Home").style.display = "none";
+            document.getElementById("state-pension-Cal").style.display = "block";
+            document.getElementById("workplace-pension-Cal").style.display = "none";
+
+            document.getElementById("state-pension-form").style.display = "block";
+            document.getElementById("state-pension-result").style.display = "none";
+
+            document.getElementById('gender').selectedIndex=0;
+            document.getElementById('dob').value='';
+        } else {
+            document.getElementById("pension-Cal-Home").style.display = "none";
+            document.getElementById("state-pension-Cal").style.display = "none";
+            document.getElementById("workplace-pension-Cal").style.display = "block";
+
+            document.getElementById("workplace-pension-form").style.display = "block";
+            document.getElementById("workplace-pension-result").style.display = "none";
+            
+            document.getElementById('dob1').value='';
+            document.getElementById('salary').value='';
+            document.getElementById('employee').value='';
+            document.getElementById('employer').value='';
+
+        }
+    }
+    function setHomeUI() {
+        document.getElementById("pension-Cal-Home").style.display = "block";
+        document.getElementById("state-pension-Cal").style.display = "none";
+        document.getElementById("workplace-pension-Cal").style.display = "none";
+    }
+    function calculateStatePension() {
+        var statePensionAmount = 0, statePensionDate;
+        var genderOptions = document.getElementById('gender');
+        var gender = genderOptions.options[genderOptions.selectedIndex].value;
+        var dob = new Date(document.getElementById('dob').value);
+        var tempdob = new Date(document.getElementById('dob').value);
+
+
+
+        if (gender == "male") {
+            tempdob.setFullYear(tempdob.getFullYear() + 68);
+            var dateMark = new Date("06-04-1951");
+            if (dob >= dateMark) {
+                statePensionAmount = (185.15 * 52).toFixed(2);
+            } else {
+                statePensionAmount = (141.85 * 52).toFixed(2);
+            }
+        } else {
+            tempdob.setFullYear(tempdob.getFullYear() + 68);
+            var dateMark = new Date("06-04-1953");
+            if (dob >= dateMark) {
+                statePensionAmount = (185.15 * 52).toFixed(2);
+            } else {
+                statePensionAmount = (141.85 * 52).toFixed(2);
+            }
+        }
+        document.getElementById('pensionStartDateSP').innerHTML="You start getting your pension from: <label style='color:green'>"+tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear()+"</label>";
+        document.getElementById("state-pension-form").style.display = "none";
+        document.getElementById("state-pension-result").style.display = "block";
+        document.getElementById('statePensionLabelResult').innerHTML = "Your forecast is <label style='color:green'>£185.15</label>* a week and <label style='color:green'>£" + statePensionAmount + "</label>* a year";
+    }
+
+    function calculateWorkplacePension() {
+        var dob = new Date(document.getElementById('dob1').value);
+        var tempdob = new Date(document.getElementById('dob1').value);
+        tempdob.setFullYear(tempdob.getFullYear() + 68);
+        document.getElementById('pensionStartDateWP').innerHTML="You start getting your pension from: <label style='color:green'>"+tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear()+"</label>";
+        var remainingYears = tempdob.getFullYear() - new Date().getFullYear();
+        var salary = parseInt(document.getElementById('salary').value);
+        var employeeContPercent = parseInt(document.getElementById('employee').value);
+        var employerContPercent = parseInt(document.getElementById('employer').value);
+
+        var employeeContAmount = (salary / 12) * employeeContPercent * 0.01;
+        var employerContAmount = (salary / 12) * employerContPercent * 0.01;
+
+        var yearly_Total_Pension_Contribution = (employeeContAmount + employerContAmount) * 12;
+
+        var pensionFund = 0;
+        for (i = 0; i < remainingYears; i++) {
+            pensionFund = pensionFund + yearly_Total_Pension_Contribution;
+            pensionFund = pensionFund + (pensionFund * 0.02) // Inflation
+            pensionFund = pensionFund - (yearly_Total_Pension_Contribution * 0.0075) // Inflation
+        }
+        pensionFund = pensionFund.toFixed(2);
+        document.getElementById("workplace-pension-form").style.display = "none";
+        document.getElementById("workplace-pension-result").style.display = "block";
+        document.getElementById('workplacePensionLabelResult').innerHTML = "Your estimated total pension fund at retirement age: <label style='color:green'>£" + pensionFund + "</label>*";
+
+    }
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label class="welcomeLabel">Pension Calculator</label>
+    <div class="sub-body-frame">
+        <div id="pension-Cal-Home" class="pension-Cal-Home">
+            <label class="sectionHeaderPenCal homeHeader">Select the type of pension</label>
+            <div class="container">
+                <div class="accordions">
+                    <div class="accordion one" onclick="showPensionPage('1')">
+                        <input class="accordionType" type="checkbox" id="first">
+                        <label class="acc-label" for="first">State Pension</label>
+                        <div class="acc-content">
+                            This is a regular payment from the government. You can take it when you reach State Pension
+                            age.<br>The amount you get depends on your National Insurance record.
+                        </div>
+                    </div>
+                    <div class="accordion two" onclick="showPensionPage('2')">
+                        <input class="accordionType" type="checkbox" id="second">
+                        <label class="acc-label" for="second">WorkPlace Pension</label>
+                        <div class="acc-content">
+                            A workplace pension is a way of saving for your retirement that’s arranged by your
+                            employer.<br>There are different types of workplace pension that employers use.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="state-pension-Cal" class="state-pension-Cal">
+            <label class="sectionHeaderPenCal subHeader">State Pension</label>
+            <div id="state-pension-form" class="state-pension-form">
+                <div class="sectionHeaderPenCal sectionHeader">Enter the details below:</div>
+                <div class="textbox gen">
+                    <label>Gender</label>
+                    <select id="gender" class="gender">
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="textbox dob">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dob" class="input" name="dob" required="required"
+                        placeholder="Date of Birth">
+                </div>
+                <button class="buttonPenCal buttonCalculate" onclick="calculateStatePension()">Calculate</button>
+            </div>
+            <div id="state-pension-result" class="state-pension-result">
+                <label class="statePensionLabelMain">Your State Pension summary</label><br>
+                <label id="pensionStartDateSP" class="statePensionLabelMain1"></label>
+                <label id="statePensionLabelResult" class="statePensionLabelResult"></label>
+                <div class="infoPenCal">
+                    <div class="iButtonPenCal"><label>i</label></div>
+                    <label class="infoTextPenCal">For the purpose of the calculator, we’ve assumed you will receive the full State Pension which is:
+                        £185.15/£141.85 per week based on your date of birth. How much you actually get depends on your National Insurance Contribution record. </label>
+                </div>
+            </div>
+            <button class="buttonPenCal buttonBack" onclick="setHomeUI()">Back</button>
+        </div>
+        <div id="workplace-pension-Cal" class="workplace-pension-Cal">
+            <label class="sectionHeaderPenCal subHeader">Workplace Pension</label>
+            <div id="workplace-pension-form" class="workplace-pension-form">
+                <div class="sectionHeaderPenCal sectionHeader">Enter the details below:</div>
+                <div class="textbox gen1">
+                    <label>Gender</label>
+                    <select id="gender1" class="gender1">
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="textbox dob1">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dob1" class="input" name="dob" required="required"
+                        placeholder="Date of Birth">
+                </div>
+                <div class="textbox salary">
+                    <label>Salary</label>
+                    <input type="number" class="input" id="salary" required="required"
+                        placeholder="Enter your salary per year">
+                </div>
+                <div class="textbox employee">
+                    <label>Your gross contribution</label>
+                    <input type="number" class="input" id="employee" required="required"
+                        placeholder="Enter your gross contributions in %">
+                </div>
+                <div class="textbox employer">
+                    <label>Employer's gross contributions</label>
+                    <input type="number" class="input" id="employer" required="required"
+                        placeholder="Enter employer's gross contributions in %">
+                </div>
+                <button class="buttonPenCal buttonCalculate" onclick="calculateWorkplacePension()">Calculate</button>
+            </div>
+            <div id="workplace-pension-result" class="workplace-pension-result">
+                <label class="workplacePensionLabelMain">Your Workplace Pension summary</label><br>
+                <label id="pensionStartDateWP" class="workplacePensionLabelMain1"></label>
+                <label id="workplacePensionLabelResult" class="workplacePensionLabelResult"></label>
+                <div class="infoPenCal">
+                    <div class="iButtonPenCal"><label>i</label></div>
+                    <label class="infoTextPenCal">The figures should be considered as illustrative only, any changes to
+                        the assumptions used in the calculator could generate a smaller or larger pension fund.
+                        We've assumed your funds grow by 6% per year,
+                        and you pay annual charges of 0.75%. We've also factored in inflation, at 2% a year. </label>
+                </div>
+            </div>
+            <button class="buttonPenCal buttonBack" onclick="setHomeUI()">Back</button>
+        </div>
+    </div>
+</div>
+{% endblock content%}

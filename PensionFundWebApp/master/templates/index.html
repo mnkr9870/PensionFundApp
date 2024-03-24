@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>
+        Pension Fund
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css') }}">
+</head>
+
+<body style="background-image: linear-gradient(225deg, #ffffff, #324062);">
+    <div class="body-line body-line1"></div>
+    <div class="body-line body-line2"></div>
+    <div class="body-line body-line3"></div>
+    <div class="body-line body-line4"></div>
+    <div class="main-frame">
+        <label class="welcomeLabel">Simple way to manage your pension funds.</label>
+        <label class="lpf-label">Register now with Leicester Pension Fund.</label>
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="box-fill"></div>
+    </div>
+    <div class="options-frame">
+        <form>
+            <a class="button buttonLogin" href="{{ url_for('login') }}">
+                Login
+            </a>
+            <a class="button buttonRegister" href="{{ url_for('register') }}">
+                Register
+            </a>
+        </form>
+    </div>
+</body>
+
+</html>

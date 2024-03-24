@@ -1,0 +1,95 @@
+.main-body {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.welcomeLabel {
+    text-align: left;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+
+.sub-body-frame {
+    top: 60px;
+    left:0px;
+    right:10px;
+    bottom: 10px;
+    display: flex;
+    position: absolute;
+}
+
+
+
+
+.frame1-PensionDetails {    
+    width:50%
+}
+
+.frame2-PensionDetails {    
+    width:50%;
+    padding-left: 20px;
+}
+
+.labelHeading-PensoinDetails {
+    width: 50%;
+    left: 25px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.labelValue-PensoinDetails {
+    width: 50%;
+    left: 25px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.pensionFund{
+    color: green;
+}
+.pension-contributions-frame{
+    top:10px;
+    height:100%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+
+.contributions-chart{
+    top:25px;
+    background-color: transparent;
+    position: relative;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: gray;
+}
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/layout.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/adminDashboard.css') }}">
+    <script>       
+        
+    </script>
+    {% block script %}
+    {% endblock script%}
+</head>
+<body style="background-color: #E8EAEE;">    
+    <div class="hamburger-menu-admin">
+        <div class="app-details">
+            <label class="app-name-label">LPF</label>
+        </div>
+        <ul class="main-menu-box-admin">
+            <li id="menu-customers" class="section">
+                <a class="ham-menu-item-admin-Section">
+                    <label class="menu-label">Customer Management</label>
+                </a>
+            </li>
+            <li id="menu-userDetails">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminDashboard') }}">
+                    <label class="menu-label">Personal Details</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-pensionDetails">
+                <a class="ham-menu-item-admin"  href="{{ url_for('adminPension') }}">
+                    <label class="menu-label">Pension Details</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-beneficiary">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminBen') }}">
+                    <label class="menu-label">Beneficiaries</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-products" class="section">
+                <a class="ham-menu-item-admin-Section">
+                    <label class="menu-label">Products Management</label>
+                </a>
+            </li>            
+            <li id="menu-schemes">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminSchemes') }}">
+                    <label class="menu-label">New Schemes</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-policies" class="section">
+                <a class="ham-menu-item-admin-Section">
+                    <label class="menu-label">Policies Management</label>
+                </a>
+            </li>
+            <li id="menu-privacy">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminPrivacy') }}">
+                    <label class="menu-label">Privacy Policy</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-cookie">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminCookie') }}">
+                    <label class="menu-label">Cookie Policy</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-support" class="section">
+                <a class="ham-menu-item-admin-Section">
+                    <label class="menu-label">Support Management</label>
+                </a>
+            </li>
+            <li id="menu-tAndC">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminTandC') }}">
+                    <label class="menu-label">Terms & Conditions</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-FAQ">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminFAQ') }}">
+                    <label class="menu-label">FAQs</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+            <li id="menu-contact">
+                <a class="ham-menu-item-admin" href="{{ url_for('adminContactUs') }}">                    
+                    <label class="menu-label">Contact Details</label>
+                </a>
+                <div id='arrow' class='arrow'></div>
+            </li>
+        </ul>
+    </div>
+    <div class="right-frame-admin">
+        <div class="main-frame-admin" >
+            <div class="logout-frame">
+                <form>
+                    <a class="button buttonLogout" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </form>
+            </div>
+            {% block content %}
+            {% endblock content%}
+        </div>
+    </div>
+</body>
+
+</html>

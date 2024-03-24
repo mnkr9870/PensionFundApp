@@ -1,0 +1,114 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="application/javascript">
+
+
+    window.onload = function () {
+
+        var flowType = '{{flowType}}';
+        if (flowType == 'main') {
+            document.getElementById('customer-personal-details').style.display = 'none';
+        }
+        else if (flowType == 'search') {
+            document.getElementById('customer-personal-details').style.display = 'block';
+            setFormData();
+        }
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F";
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle = "italic";
+    }
+    function setFormData() {
+        var beneficiaries = JSON.parse('{{beneficiaries | safe}}');
+        var currentBenId, totalPercentage = 0;
+        if (beneficiaries.length > 0) {
+            document.getElementById('customer-No-ben-details').style.display = "none";
+            var listTags = "";
+            for (var i = 0; i < beneficiaries.length; i++) {
+                totalPercentage = totalPercentage + beneficiaries[i].percentage;
+                listTags = listTags + "<li id='" + beneficiaries[i]['benId'] + "'> <form action='{{ url_for('adminBen') }}' method='POST'" +
+                    "<div class='top-Row'><label class='txnLabel lblName'>" + beneficiaries[i]['name'] + "</label>" +
+                    "<label class='txnLabel lblRelation'>" + beneficiaries[i]['relation'] + "</label>" +
+                    "<label class='txnLabel percentage'>" + beneficiaries[i]['percentage'] + "% </label>" +
+                    "</div>" +
+                    "<input type='hidden' name='benId'  class='lblID' value='" + beneficiaries[i]['benId'] + "'>" +
+                    "<input type='hidden' name='userId'  class='lblID' value='" + beneficiaries[i]['userId'] + "'>" +
+                    "<input type='label' hidden name='flowType' value='update'>"+
+                    "</form></li>";
+            }
+            document.getElementById("ben-table").innerHTML = listTags;
+        } else {
+
+            document.getElementById('customer-No-ben-details').style.display = "block";
+
+        }
+
+    }
+    function notifyUser(){
+        var flowType = 'notify';
+        var searchKey = '{{searchKey}}';
+        const request = { flowType,searchKey};
+            $.ajax({
+                url: "/adminBen",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(request),
+                success: function (response) {
+                    //window.location.href = "{{url_for('adminBen')}}"
+                    alert(response);
+                }
+            });
+    }
+    function cancelUpdateProfileDetails() {
+        document.getElementById('customer-personal-details').style.display = 'none';
+    }    
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Customer Management >> Beneficiaries</label>
+                    <div class="div1">
+                        <label class="sectionHeader">Manage Customer Beneficiaries</label>
+                        <div class="textbox username">
+                            <form action="{{ url_for('adminBen') }}" method="post">
+                                <label>Search customer</label>
+                                <input type="label" hidden name="flowType" value="search">
+                                <input type="text" name="userKey" required="required"
+                                    placeholder="Search by customer's email" value="{{searchKey}}">
+                                <button class="button buttonSubmit" type="submit">Search</button>
+                            </form>
+
+                        </div>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p id="flash-Message" class="flash-Message">{{ message }}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div id="customer-personal-details" class="customer-personal-details">
+                            <ul id="ben-table" class="ben-table"></ul>                            
+                            <button id="cancel-Button" onclick="cancelUpdateProfileDetails()"
+                                class="button update-Details-Button">Cancel</button>
+                                <button id="notify-Button" onclick="notifyUser()"
+                                class="button notify-Button">Notify Customer</button>
+                        </div>
+                        <div id="customer-No-ben-details" class="customer-No-ben-details">
+                            <label class="ben-Header-Message">This customer has no beneficiaries.</label>
+                        </div>
+                        <div class="info">
+                            <div class="iButton"><label>i</label></div>
+                            <label class="infoText">To manage any customer's beneficiaries, please search by
+                                email.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

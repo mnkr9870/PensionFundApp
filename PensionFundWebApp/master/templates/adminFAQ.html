@@ -1,0 +1,169 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    var currentModule;
+    var faqsJson = JSON.parse('{{faqsJson | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F";
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle = "italic";
+
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+        document.getElementById('FAQs-list').style.display = "none";
+        document.getElementById('divFAQAdd').style.display = "none";
+
+        setModuleList();
+    }
+    function setModuleList() {
+        var modules = Object.keys(faqsJson);
+        var listTags = "<option value=0 selected>Select</option>";
+        for (var i = 0; i < modules.length; i++) {
+            listTags = listTags + "<option value='" + modules[i] + "'>" + modules[i] + "</option>";
+        }
+        document.getElementById('modules').innerHTML = listTags;
+    }
+    function getFAQs(value) {
+        value = document.getElementById('modules').value;
+        currentModule = value;
+        if (value != "0") {
+            var modules = Object.keys(faqsJson);
+            var listTags = "";
+            for (var i = 0; i < modules.length; i++) {
+                if (modules[i] == value) {
+                    for (var j = 0; j < faqsJson[modules[i]].length; j++) {
+                        listTags = listTags +
+                            "<li class='question'>" +
+                            "<label><b>" + faqsJson[modules[i]][j]["question"] + "</b></label>" +
+                            "<button onclick='editFAQ(this.id)' class='button buttonFAQEdit' id='"+faqsJson[modules[i]][j]["FAQId"]+"'>Edit</button>"+
+                            "<form action='{{ url_for('adminFAQ') }}' method='POST' class='FAQForm'>"+
+                            "<input name='FAQId' type=hidden value='"+faqsJson[modules[i]][j]["FAQId"]+"'>"+
+                            "<input type='hidden' name='flowType' value='delete'>"+
+                            "<input type='submit' class='button buttonFAQDelete' name='submit' value='Delete'></form>"+
+                            "</li>";
+                    }                    
+                }
+            }
+            document.getElementById("faqListAdmin").innerHTML = listTags;
+            document.getElementById('FAQs-list').style.display = "block";
+        } else {
+            document.getElementById('FAQs-list').style.display = "none";
+        }
+    }
+    function editFAQ(FAQId) {
+        document.getElementById('divTermsEdit').style.display = "block";
+        document.getElementById('divTerms').style.display = "none";
+
+        setEditFAQ(FAQId);
+    }
+    function setEditFAQ(FAQId){
+        var modules = Object.keys(faqsJson);
+            var listTags = "";
+            for (var i = 0; i < modules.length; i++) {
+                if (modules[i] == currentModule) {
+                    for (var j = 0; j < faqsJson[modules[i]].length; j++) {
+                        if(faqsJson[modules[i]][j]["FAQId"] == FAQId){
+                            document.getElementById('moduleEdit').value = currentModule;
+                            document.getElementById('questionEdit').value = faqsJson[modules[i]][j]["question"];
+                            document.getElementById('answerEdit').value = faqsJson[modules[i]][j]["answer"];
+                            document.getElementById('FAQId').value = faqsJson[modules[i]][j]["FAQId"];
+                        }
+                    }                    
+                }
+            }
+    }
+    function addFAQ(){
+        document.getElementById('divFAQAdd').style.display = "block";
+        document.getElementById('divTerms').style.display = "none";
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('module').value = currentModule;
+    }
+    function cancelAddFAQ(){
+        document.getElementById('divFAQAdd').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+        document.getElementById('divTermsEdit').style.display = "none";
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Support Management >> Frequently Asked Questions</label>
+                    <div id="divTerms" class="divTerms">
+                        <div id="faqAdmin" class="faqAdmin">
+                            <div class="textbox modules">
+                                <label>Select a module</label>
+                                <select id="modules" class="module" onchange="getFAQs(this.selectedIndex)"></select>
+                            </div>
+                            <div id="FAQs-list" class="FAQs-list">
+                                <label>FAQs</label>
+                                <ul id="faqListAdmin" class="faqListAdmin"></ul>
+                                <button class="button add-FAQ-button" onclick="addFAQ()">Add a new FAQ</button>
+                            </div>
+                        </div>
+                        <!---<button id="edit-TandC-Button" class="button edit-TandC-Button" onclick="oneEditTermsClick()">Edit</button>-->
+                    </div>
+                    <div id="divFAQAdd" class="divFAQAdd">
+                        <label style="font-family: 'Ubuntu-Regular';font-style: normal;font-weight: 200;font-size: 16px; line-height: 24px;color: #05153F; top:10px;position: absolute">Add a new FAQ</label>
+                        <form name="addFAQDetails" action="{{ url_for('adminFAQ') }}" method="POST">
+                            <ul class="faq-details-table">
+                                <li>
+                                    <label class="labelHeading">Module Name</label><br>
+                                    <input type="text" id="module" name="module" value=""
+                                        placeholder="Enter module name">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Question</label><br>
+                                    <input type="text" id="benRelatiquestionon1" name="question" value=""
+                                        placeholder="Enter question">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Answer</label><br>
+                                    <input type="text" id="answer" name="answer" value=""
+                                        placeholder="Enter Answer">
+                                </li>
+                                <input type="hidden" value="add"  name="flowType" >
+                                
+                            </ul>
+                            <input type="submit" class="button addFAQButton"
+                                value="Add new FAQ">
+                        </form>
+                        <button onclick="cancelAddFAQ()" class="button cancelAddFAQButton">Cancel</button>
+                    </div>
+                    <div id="divTermsEdit" class="divTermsEdit">
+                        <label style="font-family: 'Ubuntu-Regular';font-style: normal;font-weight: 200;font-size: 16px; line-height: 24px;color: #05153F; top:10px;position: absolute">Edit FAQ</label>
+                        <form name="addFAQDetails" action="{{ url_for('adminFAQ') }}" method="POST">
+                            <ul class="faq-details-table">
+                                <li>
+                                    <label class="labelHeading">Module Name</label><br>
+                                    <input type="text" id="moduleEdit" name="module" value=""
+                                        placeholder="Enter module name" readonly>
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Question</label><br>
+                                    <input type="text" id="questionEdit" name="question" value=""
+                                        placeholder="Enter question">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Answer</label><br>
+                                    <input type="text" id="answerEdit" name="answer" value=""
+                                        placeholder="Enter Answer">
+                                </li>
+                                <input type="hidden" value="edit"  name="flowType" >
+                                <input type="hidden" id="FAQId" value=""  name="FAQId" >
+                            </ul>
+                            <input type="submit" class="button addFAQButton"
+                                value="Edit FAQ">
+                        </form>
+                        <button onclick="cancelAddFAQ()" class="button cancelAddFAQButton">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

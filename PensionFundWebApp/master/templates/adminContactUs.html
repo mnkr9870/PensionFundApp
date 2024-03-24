@@ -1,0 +1,106 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    var contactDetails = JSON.parse('{{contactUsInfo | safe}}');
+     window.onload = function () {
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F";
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle = "italic";
+
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+        showContactDetails();
+     }
+     function showContactDetails(){
+        document.getElementById('email1').innerHTML = contactDetails[0]['email1'];
+        document.getElementById('email2').innerHTML = contactDetails[0]['email2'];
+        document.getElementById('phone1').innerHTML = contactDetails[0]['phone1'];
+        document.getElementById('phone2').innerHTML = contactDetails[0]['phone2'];
+        document.getElementById('address').innerHTML = contactDetails[0]['address'];
+     }
+     function oneEditTermsClick(){
+        document.getElementById('divTermsEdit').style.display = "block";
+        document.getElementById('divTerms').style.display = "none";
+
+        document.getElementById('email1Edit').value = contactDetails[0]['email1'];
+        document.getElementById('email2Edit').value = contactDetails[0]['email2'];
+        document.getElementById('phone1Edit').value = contactDetails[0]['phone1'];
+        document.getElementById('phone2Edit').value = contactDetails[0]['phone2'];
+        document.getElementById('addressEdit').value = contactDetails[0]['address'];
+     }
+
+     function cancelEditTermsClick(){
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+     }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Support Management >> Contact Us</label>
+                    <div id="divTerms" class="divTerms">
+                        <div class="sectionSubHeadingAdmin">Contact Details</div>
+                        <ul class="contact-details-table">
+                            <li>
+                                <label class="labelHeading">Email 1</label><br>
+                                <label id="email1" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Email 2</label><br>
+                                <label id="email2" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Phone 1</label><br>
+                                <label id="phone1" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Phone 2</label><br>
+                                <label id="phone2" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Adrress</label><br>
+                                <label id="address" class="labelValue"></label>
+                            </li>
+                        </ul>
+                        <button class="button editContactButton" onclick="oneEditTermsClick()">Edit</button>
+                    </div>
+                    <div id="divTermsEdit" class="divTermsEdit">
+                        <div class="sectionSubHeadingAdmin">Edit Contact Details</div>
+                        <form name="editContactUsDetails" action="{{ url_for('adminContactUs') }}" method="POST">
+                            <ul class="contact-details-table contact-details-table-Edit">
+                                <li>
+                                    <label class="labelHeading">Email 1</label><br>
+                                    <input type="email" id="email1Edit" name="email1" value="">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Email 2</label><br>
+                                    <input type="email" id="email2Edit" name="email2" value="">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Phone 1</label><br>
+                                    <input type="number" id="phone1Edit" name="phone1" value="" maxlength="11" pattern="[0-9]{11}" title="Ex:07XXXXXXXXX">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Phone 2</label><br>
+                                    <input type="number" id="phone2Edit" name="phone2" value="" maxlength="11" pattern="[0-9]{11}" title="Ex:07XXXXXXXXX">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Address</label><br>
+                                    <input type="text" id="addressEdit" name="address" value="">
+                                </li>
+                            </ul>
+                            <input type="Submit" name="submit" class="button saveContactButton" value="Save">
+                        </form>
+                        <button onclick="cancelEditTermsClick()" class="button cancelContactButton">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

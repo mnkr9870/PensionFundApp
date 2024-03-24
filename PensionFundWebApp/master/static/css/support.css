@@ -1,0 +1,151 @@
+.supportdata{
+    left: 10px;
+    right:10px;
+    text-align: left;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
+    overflow-y : scroll;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.contactData{
+    left: 10px;
+    right:10px;
+    text-align: left;
+    height:95%;
+    position: absolute;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 30px;
+
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+
+}
+.faqdata{
+    left: 10px;
+    right:10px;
+    text-align: left;
+    height:95%;
+    position: absolute;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 30px;
+    overflow: scroll;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+
+}
+.moduleName{
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.question{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
+    color:#05153F
+}
+.schemes{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
+    height:200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+    color:#05153F
+}
+.faqList{
+    list-style: none;
+}
+
+.contact-details-table {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 70%;
+    left: 0px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline-start: 12px;
+}
+
+.contact-details-table li {
+    height: 75px;
+    display: block;
+    top: 10px;
+}
+
+.contact-details-table li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.contact-details-table li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.map{
+    height:400px;
+    width:400px;
+    right:25px;
+    top:50%;
+    transform: translateY(-50%);
+    position: absolute;
+
+    border-radius: 10px;
+}

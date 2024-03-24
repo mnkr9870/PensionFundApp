@@ -1,0 +1,51 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    
+     window.onload = function () {
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F";
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle = "italic";
+
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+     }
+     function oneEditTermsClick(){
+        document.getElementById('divTermsEdit').style.display = "block";
+        document.getElementById('divTerms').style.display = "none";
+     }
+
+     function cancelEditTermsClick(){
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+     }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Policy Management >> Privacy Policy</label>
+                    <div id="divTerms" class="divTerms">
+                        <label class="sectionHeader">Privacy Policy</label>
+                        <div id="supportdataAdmin" class="supportdataAdmin">{{privacyPolicy  | safe }}</div>
+                        <button id="edit-TandC-Button" class="button edit-TandC-Button" onclick="oneEditTermsClick()">Edit</button>
+                    </div>
+                    <div id="divTermsEdit" class="divTermsEdit">
+                        <label class="sectionHeader">Edit Privacy Policy</label>
+                        <form action="{{ url_for('adminPrivacy') }}" method="post" id="tandCForm"> 
+                            <input type="Submit" name="submit" form="tandCForm" id="update-form-Button"
+                                class="button edit-TandC-Form-Button" value="Submit">
+                            <button id="cancel-TandC-Button" class="button cancel-TandC-Button" onclick="cancelEditTermsClick()">Cancel</button>
+                        </form>
+                        <textarea id = "privacyText" name="privacyText" form="tandCForm" class="textArea textArea-TandC">{{privacyPolicy}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

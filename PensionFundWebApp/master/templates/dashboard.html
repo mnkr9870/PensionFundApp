@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block script %}
+<script>
+    window.onload = function () {
+        var userPensionDetails = JSON.parse('{{userPensionDetails | safe}}');
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById("policyName").innerHTML = userPensionDetails['policyName'];
+        document.getElementById("policyNumber").innerHTML = userPensionDetails['policyNumber'];
+        document.getElementById("pensionFund").innerHTML = userPensionDetails['pensionFund'];
+        loadNews();
+    }
+    function loadNews(){
+        var news_list = JSON.parse('{{news_list | safe}}');
+        var listTags="";
+        for(var i=0;i<news_list.length;i++){
+            listTags = listTags+"<li>"+
+                "<div class='top-Row'><label class='txnLabel lblHeadline'>"+news_list[i]['title']+"</label></div>"+
+                        "<div class='bottom-Row'><a class='txnLabel lblLink' href=" + news_list[i]['link'] + " target='_blank'>Read More...</a></div></li>";
+        }
+        document.getElementById("news-table").innerHTML=listTags;
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body">
+    <label class="welcomeLabel">Hello, {{firstName}} {{lastName}}!</label>
+    <div class="sub-body-frame">
+        <div class="frame frame1">
+            <div class="pension-funds-frame">
+                <div class="sectionHeading">Your Pension</div>
+                <div class="pension-details">
+                    <ul class="pension-details-table">
+                        <li>
+                            <label class="labelHeading">Policy Name</label><br>
+                            <label id="policyName" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Policy Number</label><br>
+                            <label id="policyNumber" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Pension Fund</label><br>
+                            <label id="pensionFund" class="labelValue pensionFund"></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>            
+        </div>        
+
+        <div class="frame frame3">
+            <div class="latest-news-frame">
+                <div class="sectionHeading">Top news around you</div>
+                <ul id="news-table" class="news-table"></ul>      
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

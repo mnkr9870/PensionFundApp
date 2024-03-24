@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    var userPensionDetails = JSON.parse('{{userPensionDetails | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById("policyName").innerHTML = userPensionDetails['policyName'];
+        document.getElementById("policyNumber").innerHTML = userPensionDetails['policyNumber'];
+        document.getElementById("pensionFund").innerHTML = userPensionDetails['pensionFund'];
+        document.getElementById("retirementAge").innerHTML = userPensionDetails['retirementAge'];
+    }
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawPieChart);
+    function drawPieChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Contribution', 'Percentage'],
+            ['Employer Contribution', userPensionDetails['employeeContribution']],
+            ['Employee Contribution', userPensionDetails['employerContribution']]
+        ]);
+
+        var options = {
+            'backgroundColor': 'transparent',
+            'fontName': 'Ubuntu',
+            'width': 650,
+            'height': 400,
+            'slices': {
+                0: { color: '#05153F' },
+                1: { color: '#A4AAB9' }
+            },
+            'pieHole': 0.3
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
+        chart.draw(data, options);
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body">
+    <label class="welcomeLabel">Pension Details</label>
+    <div class="sub-body-frame">
+        <div class="frame frame1-PensionDetails">
+            <div class="pension-funds-frame">
+                <div class="sectionHeading">Your Pension Details</div>
+                <div class="pension-details">
+                    <ul class="pension-details-table">
+                        <li>
+                            <label class="labelHeading-PensoinDetails">Policy Name</label><br>
+                            <label id="policyName" class="labelValue-PensoinDetails"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading-PensoinDetails">Policy Number</label><br>
+                            <label id="policyNumber" class="labelValue-PensoinDetails"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading-PensoinDetails">Pension Fund</label><br>
+                            <label id="pensionFund" class="labelValue-PensoinDetails pensionFund"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading-PensoinDetails">Retirement Age</label><br>
+                            <label id="retirementAge" class="labelValue-PensoinDetails"></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="frame frame2-PensionDetails">
+            <div class="pension-contributions-frame">
+                <div class="sectionHeading">Pension Contribution</div>
+                <div class="contributions-chart">
+                    <div id="pie-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

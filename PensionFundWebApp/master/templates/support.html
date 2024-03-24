@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<meta charset="UTF-8">
+<script>
+    var supportType = '{{supportType}}';
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        if (supportType == "privacyPolicy")
+            document.getElementById('welcomeLabel').innerHTML = "Privacy Policy";
+        else if (supportType == "cookiePolicy")
+            document.getElementById('welcomeLabel').innerHTML = "Cookie Policy";
+        else if (supportType == "Terms")
+            document.getElementById('welcomeLabel').innerHTML = "Terms and Conditions";
+        else if (supportType == "Terms")
+            document.getElementById('welcomeLabel').innerHTML = "Terms and Conditions";
+        else
+            document.getElementById('welcomeLabel').innerHTML = "XXXX";
+        
+    }
+
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label id="welcomeLabel" class="welcomeLabel"></label>
+    <div class="sub-body-frame">
+        <div id="supportdata" class="supportdata">{{supportData  | safe }}</div>
+    </div>
+</div>
+{% endblock content%}

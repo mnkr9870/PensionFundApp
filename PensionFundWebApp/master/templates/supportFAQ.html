@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<meta charset="UTF-8">
+<script>
+    var faqsJson = JSON.parse('{{faqsJson | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        document.getElementById('welcomeLabel').innerHTML = "FAQs";
+        setFAQData();
+    }
+    function setFAQData() {
+        var modules = Object.keys(faqsJson);
+        var listTags = "";
+        for (var i = 0; i < modules.length; i++) {
+            listTags = listTags + "<li class='moduleName'>"+"<b><em>"+modules[i]+"</em></b></br>";
+            for (var j = 0; j < faqsJson[modules[i]].length; j++)
+            {
+                listTags = listTags + "</br><ul>"+
+                    "<li class='question'>"+
+                        "<b>"+faqsJson[modules[i]][j]["question"]+"</b></br>"+
+                        faqsJson[modules[i]][j]["answer"]+"</br>"+
+                    "</li>"+
+                    "</ul>";
+            }
+            listTags = listTags + "</li></br>";
+        }
+        document.getElementById("faqList").innerHTML = listTags;
+    }
+
+
+</script>
+{% endblock script%}
+{% block content %}
+
+<div class="main-body">
+    <label id="welcomeLabel" class="welcomeLabel"></label>
+    <div class="sub-body-frame">
+        <div id="faqdata" class="faqdata">
+            <ul id="faqList" class="faqList"></ul>
+
+        </div>
+    </div>
+</div>
+{% endblock content%}

@@ -1,0 +1,73 @@
+Hello
+Hi there!
+Hello there!
+Hi!
+Hi
+Hi!
+How are you?
+I'm good.
+How are you doing?
+I'm doing great.
+That is good to hear.
+Thank you.
+You're welcome.
+Thank you so much.
+You're welcome.
+Who are you?
+My name is Lexi. I am a bot.
+Tell me about yourself.
+My name is Lexi. I am a bot.
+What is support mobile number?
+You can find it in Contact Us section.
+What is support mobile phone number?
+You can find it in Contact Us section.
+What is support contact number?
+You can find it in Contact Us section.
+Is there any support contact number?
+You can find it in Contact Us section.
+Can you tell me what is support contact number?
+You can find it in Contact Us section.
+Can you tell me what is support phone number?
+You can find it in Contact Us section.
+What is support email address?
+You can find it in Contact Us section.
+What is the support email?
+You can find it in Contact Us section.
+What is support email address?
+You can find it in Contact Us section.
+What is email contact address?
+You can find it in Contact Us section.
+Is there any support email?
+You can find it in Contact Us section.
+Can you tell me what is support email address?
+You can find it in Contact Us section.
+Can you tell me what is support email?
+You can find it in Contact Us section.
+What is support email address?
+You can find it in Contact Us section.
+How can i calculate pension fund?
+Use our pension calculator in left menu.
+Where can I calculate pension?
+Use our pension calculator in left menu.
+How to add a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+How to edit a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+How to delete a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+Where can i add a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+Where can i delete a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+Where can i edit a beneficiary?
+You can add/update a beneficiary in Manage Beneficiary section.
+How to email the recent payments?
+Unfortunately you can only download payments.
+How to email the payments?
+Unfortunately you can only download payments.
+Where can I email the payments?
+Unfortunately you can only download payments.
+How to donwload the payments?
+You can download payments in Recent Payments section.
+where can I donwload the payments?
+You can download payments in Recent Payments section.

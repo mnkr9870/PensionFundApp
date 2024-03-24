@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>
+        Pension Fund
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css') }}">
+</head>
+
+<body style="background-image: linear-gradient(90deg, #ffffff, #324062);">
+    <div class="main-frame">
+        <div class="left-frame">
+            <img class="img-home-ad1" src="{{url_for('static', filename='img-home-ad1.png')}}" />
+            <label class="lpf-label">Leicester Pension Fund</label>
+        </div>
+        <div class="right-frame">            
+            <div class="login-frame">                
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <p class="flash-Message">{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <h2>Admin Login</h2>
+                <form action="{{ url_for('adminlogin') }}" method="post">
+                    <div class="textbox">
+                        <input type="text" name="username" required="required" placeholder="Username" value="">                        
+                    </div>
+                    <div class="textbox">
+                        <input type="password" name="password" required="required" placeholder="Password" value="">                        
+                    </div>
+                    <button class="button buttonLogin" type="submit">Login</button>
+                </form>                
+                <div class="cancel"><p>Click <a class="cancelLink" href="{{ url_for('home') }}">here</a> to cancel.</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

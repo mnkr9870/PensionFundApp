@@ -1,0 +1,297 @@
+{% extends "layout.html" %}
+{% block script %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="application/javascript" >
+    var beneficiaries = JSON.parse('{{beneficiaries | safe}}');
+    var currentBenId, totalPercentage = 0;
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        setFormData();
+    }
+
+    function setFormData() {
+        if (beneficiaries.length > 0) {
+            document.getElementById('ManageBeneficiariesFrame').style.display = "block";
+            document.getElementById('NoBeneficiariesFrame').style.display = "none";
+            document.getElementById('AddNewBeneficiariesFrame').style.display = "none";
+            document.getElementById('add-ben-Button1').style.display = "block";
+            var listTags = "";
+            totalPercentage = 0;
+            for (var i = 0; i < beneficiaries.length; i++) {
+                totalPercentage = totalPercentage + beneficiaries[i].percentage;
+                listTags = listTags + "<li id='" + beneficiaries[i]['benId'] + "' onclick='showBenDetails(\"" + beneficiaries[i]['benId'].toString() + "\")'>" +
+                    "<div class='top-Row'><label class='txnLabel lblName'>" + beneficiaries[i]['name'] + "</label>" +
+                    "<label class='txnLabel lblRelation'>" + beneficiaries[i]['relation'] + "</label><div id='arrow' class='arrow'></div></div>"
+                "<label hidden='hidden' class='lblID'>" + beneficiaries[i]['benId'] + "</label>" +
+                    "</li>";
+            }
+            document.getElementById("ben-table").innerHTML = listTags;
+            showBenDetails(beneficiaries[0]['benId']);
+        } else {
+            document.getElementById('ManageBeneficiariesFrame').style.display = "none";
+            document.getElementById('NoBeneficiariesFrame').style.display = "block";
+            document.getElementById('AddNewBeneficiariesFrame').style.display = "none";
+
+        }
+
+    }
+    function showBenDetails(benId) {
+        currentBenId = benId;
+        document.getElementById('ben-details').style.display = "block";
+        document.getElementById('ben-details-Edit').style.display = "none";
+
+        for (var i = 0; i < beneficiaries.length; i++) {
+            if (benId == beneficiaries[i]['benId']) {
+                document.getElementById(beneficiaries[i]['benId']).querySelector("#arrow").style.display = "block";
+                document.getElementById(beneficiaries[i]['benId']).style.borderColor = '#05153F';
+                document.getElementById('benName').innerHTML = beneficiaries[i].name;
+                document.getElementById('benRelation').innerHTML = beneficiaries[i].relation;
+                document.getElementById('benPercentage').innerHTML = beneficiaries[i].percentage + " %";
+            } else {
+                document.getElementById(beneficiaries[i]['benId']).style.borderColor = 'gray';
+                document.getElementById(beneficiaries[i]['benId']).querySelector("#arrow").style.display = "none";
+            }
+        }
+    }
+    function editBeneficiaryDetails() {
+        document.getElementById('ben-details').style.display = "none";
+        document.getElementById('ben-details-Edit').style.display = "block";
+        for (var i = 0; i < beneficiaries.length; i++) {
+            if (currentBenId == beneficiaries[i]['benId']) {
+                document.getElementById('benName2').value = beneficiaries[i].name;
+                document.getElementById('benRelation2').value = beneficiaries[i].relation;
+                document.getElementById('benPercentage2').value = beneficiaries[i].percentage;
+                document.getElementById('benId2').value = beneficiaries[i].benId;
+            }
+        }
+    }
+
+    function editBenValidation() {
+        var totalPercentageEdit = 0;
+        for (var i = 0; i < beneficiaries.length; i++) {
+            if(beneficiaries[i].benId!=document.getElementById('benId2').value)
+                totalPercentageEdit = totalPercentageEdit + beneficiaries[i].percentage;
+        }
+
+        var benName2 = document.getElementById('benName2').value;
+        var benRelation2 = document.getElementById('benRelation2').value;
+        var benPercentage2 = parseInt(document.getElementById('benPercentage2').value);
+        if(/^[a-zA-Z ]+$/.test(benName2)){
+            console.log("");
+        }else{
+            alert("Name must contain only alphabets.");
+            return;
+        }
+        if(/^[a-zA-Z ]+$/.test(benRelation2)){
+            console.log("");
+        }else{
+            alert("Relation must contain only alphabets.");
+            return;
+        }
+        if(benPercentage2<=100){
+            console.log("");
+        }else{
+            alert("Percentage must not exceed 100.");
+            return;
+        }
+
+
+        var flowType = document.getElementById('flowType2').value;
+        var benId2 = document.getElementById('benId2').value;
+        if(benPercentage2<=0){
+            alert("Beneficiaries percentage must be greater than 0.")
+        }else if ((totalPercentageEdit + benPercentage2) > 100) {
+            alert("Total percentage cannot exceed 100.")//showAlertMessage();
+        } else {            
+            const request = { benName2, benRelation2, benPercentage2,flowType,benId2}
+            $.ajax({
+                url: "/beneficiaries",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(request),
+                success: function (response) {
+                    window.location.href = "{{url_for('beneficiaries')}}"
+                }
+            });
+        }
+
+    }
+    function deleteBen(){
+        var flowType = 'Delete';
+        var benId2 = document.getElementById('benId2').value;
+        const request = { flowType,benId2}
+            $.ajax({
+                url: "/beneficiaries",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(request),
+                success: function (response) {
+                    window.location.href = "{{url_for('beneficiaries')}}"
+                }
+            });
+    }
+    function cancelEditBenDetails() {
+        document.getElementById('ben-details').style.display = "block";
+        document.getElementById('ben-details-Edit').style.display = "none";
+    }
+
+    function cancelAddBenDetails() {
+        setFormData();
+    }
+
+    function addNewBen() {
+        document.getElementById('AddNewBeneficiariesFrame').style.display = "block";
+        document.getElementById('ManageBeneficiariesFrame').style.display = "none";
+        document.getElementById('NoBeneficiariesFrame').style.display = "none";
+
+        document.getElementById('benName1').value = "";
+        document.getElementById('benRelation1').value = "";
+        document.getElementById('benPercentage1').value = "";
+    }
+    function addNewBenValidation() {        
+        var benName1 = document.getElementById('benName1').value;
+        var benRelation1 = document.getElementById('benRelation1').value;
+        var benPercentage1 = parseInt(document.getElementById('benPercentage1').value);
+
+        if(/^[a-zA-Z ]+$/.test(benName1)){
+            console.log("");
+        }else{
+            alert("Name must contain only alphabets.");
+            return;
+        }
+        if(/^[a-zA-Z ]+$/.test(benRelation1)){
+            console.log("");
+        }else{
+            alert("Relation must contain only alphabets.");
+            return;
+        }
+        if(benPercentage1<=100){
+            console.log("");
+        }else{
+            alert("Percentage must not exceed 100.");
+            return;
+        }
+
+
+
+        var flowType = document.getElementById('flowType1').value;
+        if(benPercentage1<=0){
+            alert("Beneficiaries percentage must be greater than 0.")
+        }else if ((totalPercentage + benPercentage1) > 100) {
+            alert("Beneficiaries percentage cannot exceed more than 100.")//showAlertMessage();
+        } else {            
+            const request = { benName1, benRelation1, benPercentage1,flowType}
+            $.ajax({
+                url: "/beneficiaries",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(request),
+                success: function (response) {
+                    window.location.href = "{{url_for('beneficiaries')}}"
+                }
+            });
+        }
+
+    }
+
+
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body">
+    <label class="welcomeLabel">Manage Beneficiaries</label>
+    <div class="sub-body-frame">
+        <div class="frame frame1-ben">
+            <div class="ben-frame">
+                <div id="AddNewBeneficiariesFrame" class="pension-new-ben">
+                    <div id="add-ben" class="add-ben-frame">
+                        <div class="sectionSubHeadingBen">Add a new beneficiary</div>
+                        <form name="addBenDetails" action="{{ url_for('beneficiaries') }}" method="POST">
+                            <ul class="ben-details-table">
+                                <li>
+                                    <label class="labelHeading">Beneficiary Name</label><br>
+                                    <input type="text" id="benName1" name="benName1" value=""
+                                        placeholder="Enter beneficiary name" pattern="[a-zA-Z ]+" title="Only alphabets and space are allowed.">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Beneficiary Relation</label><br>
+                                    <input type="text" id="benRelation1" name="benRelation1" value=""
+                                        placeholder="Enter relationship with beneficiary" pattern="[a-zA-Z ]+" title="Only alphabets and space are allowed.">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Percentage</label><br>
+                                    <input type="number" id="benPercentage1" name="benPercentage1" value=""
+                                        placeholder="Enter beneficiary percentage"  min="1" max="100">
+                                </li>
+                                <input type="label" value="addBen" id="flowType1" name="flowType1" hidden>
+                            </ul>
+                            <input type="button" onclick="addNewBenValidation()" class="button addButton"
+                                value="Add Beneficiary">
+                        </form>
+                        <button onclick="cancelAddBenDetails()" class="button cancelButton">Cancel</button>
+                    </div>
+                </div>
+                <div id="NoBeneficiariesFrame" class="pension-no-ben">
+                    <label class="ben-Header-Message">You have no beneficiaries. Please add at least one.</label>
+                    <button class="button add-ben-button" onclick="addNewBen()">Add a beneficiary</button>
+                </div>
+                <div id="ManageBeneficiariesFrame" class="pension-ben">
+                    <div class="sectionHeadingBen">Your Beneficiaries</div>
+                    <div class="ben-list">
+                        <ul id="ben-table" class="ben-table"></ul>
+                        <div class="info">
+                            <div class="iButton"><label>i</label></div>
+                            <label class="infoText">Select a beneficiary to view and edit details.</label>
+                        </div>
+                        <button id="add-ben-Button1" class="button add-ben-button1" onclick="addNewBen()">Add a
+                            beneficiary</button>
+                    </div>
+                    <div class="line"></div>
+                    <div id="ben-details" class="ben-details">
+                        <div class="sectionSubHeadingBen">Beneficiary Details</div>
+                        <ul class="ben-details-table">
+                            <li>
+                                <label class="labelHeading">Beneficiary Name</label><br>
+                                <label id="benName" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Beneficiary Relation</label><br>
+                                <label id="benRelation" class="labelValue"></label>
+                            </li>
+                            <li>
+                                <label class="labelHeading">Percentage</label><br>
+                                <label id="benPercentage" class="labelValue"></label>
+                            </li>
+                        </ul>
+                        <button class="button editButton" onclick="editBeneficiaryDetails()">Edit</button>
+                    </div>
+                    <div id="ben-details-Edit" class="ben-details">
+                        <div class="sectionSubHeadingBen">Edit Beneficiary Details</div>
+                        <form name="editBenDetails" action="{{ url_for('beneficiaries') }}" method="POST">
+                            <ul class="ben-details-table">
+                                <li>
+                                    <label class="labelHeading">Beneficiary Name</label><br>
+                                    <input type="text" id="benName2" name="benName2" value="" pattern="[a-zA-Z ]+" title="Only alphabets and space are allowed.">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Beneficiary Relation</label><br>
+                                    <input type="text" id="benRelation2" name="benRelation2" value="" pattern="[a-zA-Z ]+" title="Only alphabets and space are allowed.">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Percentage</label><br>
+                                    <input type="number" id="benPercentage2" name="benPercentage2" value="" min="1" max="100">
+                                </li>
+                                <input type="label" value="" id="benId2" name="benId2" hidden>
+                                <input type="label" value="editBen" id="flowType2" name="flowType2" hidden>
+                            </ul>
+                            <input type="button" name="submit" onclick="editBenValidation()" class="button saveButton" value="Save">
+                            <input type="button" name="submit" onclick="deleteBen()" class="button deleteBenButton" value="Delete Beneficiary">
+                        </form>
+                        <button onclick="cancelEditBenDetails()" class="button cancelButton">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block script %}
+<script>
+    var payments = JSON.parse('{{payments | safe}}');
+    var currentPaymentId;
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+        if (payments.length > 0) {
+            var listTags = "";
+            var pdfTags="";
+            for (var i = 0; i < payments.length; i++) {
+                listTags = listTags + "<li id='" + payments[i]['referenceNumber'] + "' onclick='showPaymentDetails(\"" + payments[i]['referenceNumber'].toString() + "\")'>" +
+                    "<div class='top-Row'><label class='txnLabel lblFrom'>" + payments[i]['from'] + "</label>" +
+                    "<label class='txnLabel lblAmount'>" + payments[i]['amount'] + "</label></div>" +
+                    "<div class='bottom-Row'><label class='txnLabel lblDesc'>" + payments[i]['description'] + "</label>" +
+                    "<label class='txnLabel lblDate'>" + payments[i]['transactionDate'] + "</label></div>" +
+                    "<label hidden='hidden' class='lblRef'>" + payments[i]['referenceNumber'] + "</label>" +
+                    "</li>";
+
+                pdfTags = pdfTags+"<br><br><br><b><label>From:&emsp;" + payments[i]['from'] + "</label></b>"+
+                "<br><label>Amount:&emsp;" + payments[i]['amount'] + "</label>"+
+                "<br><label>TransactionDate:&emsp;" + payments[i]['transactionDate'] + "</label>" ;
+            }
+            document.getElementById("pension-payments-table").innerHTML = listTags;
+
+            document.getElementById("userMessageInput").value ='<head><style>h1 {text-align: center;}h3 {text-align: center;}</style></head><body><h1>Pension Fund</h1><br><h3>Recent Payments</h3><br>' +pdfTags+'</body>';
+
+            showPaymentDetails(payments[0]['referenceNumber']);
+            document.getElementById('NoPaymentsFrame').style.display='none';
+            document.getElementById('paymentList').style.display='block';
+            document.getElementById('paymentDetails').style.display='block';
+        } else {
+            document.getElementById('NoPaymentsFrame').style.display='block';
+            document.getElementById('paymentList').style.display='none';
+            document.getElementById('paymentDetails').style.display='none';
+            document.getElementById("userMessageInput").value ='<head><style>h1 {text-align: center;}h3 {text-align: center;}</style></head><body><h1>Pension Fund</h1><br><h3>Recent Payments</h3><br>NO RECENT PAYMENTS</body>';
+        }
+    }
+    function showPaymentDetails(refNum) {
+        currentPaymentId = refNum;
+        for (var i = 0; i < payments.length; i++) {
+            if (refNum == payments[i]['referenceNumber']) {
+                document.getElementById(payments[i]['referenceNumber']).style.boxShadow = 'inset 0 0 10px #324062';
+                document.getElementById(payments[i]['referenceNumber']).style.webkitBoxShadow = 'inset 0 0 10px #324062';
+                document.getElementById('txnDescription').innerHTML = payments[i].from;
+                document.getElementById('txnType').innerHTML = payments[i].description;
+                document.getElementById('txnAmount').innerHTML = payments[i].amount;
+                document.getElementById('txnDate').innerHTML = payments[i].transactionDate;
+                document.getElementById('txnRef').innerHTML = payments[i].referenceNumber;
+
+            } else {
+                document.getElementById(payments[i]['referenceNumber']).style.boxShadow = '';
+                document.getElementById(payments[i]['referenceNumber']).style.webkitBoxShadow = '';
+            }
+        }
+    }    
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body">
+    <label class="welcomeLabel">Recent Payments</label>
+    <div class="sub-body-frame">
+        <div id ="paymentList" class="frame frame1-payments">
+            <div class="pension-funds-frame">
+                <div class="sectionHeading">Your Recent Payments</div>
+                <div id="pension-payments" class="pension-payments">
+                    <ul id="pension-payments-table" class="pension-payments-table"></ul>
+                </div>
+                <div class="infoPayments">
+                    <div class="iButtonPayments"><label>i</label></div>
+                    <label class="infoTextPayments">Select a payment to view more details.</label>
+                </div>
+                                
+            </div>
+        </div>
+        <div id="NoPaymentsFrame" class="pension-no-payments">
+            <label class="payments-Header-Message">You have no recent payments. Please come back next month and check.</label>
+=        </div>
+        <div id ="paymentDetails" class="frame frame2-payments">
+            <div class="latest-news-frame">
+                <div class="sectionHeading">Payment Details</div>
+                <div id="payment-details" class="payment-details">
+                    <ul class="payment-details-table">
+                        <li>
+                            <label class="labelHeading">Description</label><br>
+                            <label id="txnDescription" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Transaction Type</label><br>
+                            <label id="txnType" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Amount</label><br>
+                            <label id="txnAmount" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Date</label><br>
+                            <label id="txnDate" class="labelValue"></label>
+                        </li>
+                        <li>
+                            <label class="labelHeading">Reference Number</label><br>
+                            <label id="txnRef" class="labelValue"></label>
+                        </li>
+                    </ul>
+                    <div style="bottom:3%;position:absolute;width:100%">
+                        <form  action="{{ url_for('generatePDF') }}" method="POST">
+                            <input id="userMessageInput" name="userMessageInput" value="" hidden>
+                            <input type="submit" class="button buttonDownload" name="submit" value="Donwload Payments">
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

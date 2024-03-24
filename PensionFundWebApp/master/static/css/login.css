@@ -1,0 +1,313 @@
+.main-frame {
+    width: 55%;
+    height: 70%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 20px gray;
+    box-shadow: 0 0 20px gray;
+}
+
+.left-frame {
+    height: 100%;
+    width: 40%;
+    left: 0%;
+    background-color: #05153F;
+    position: absolute;
+}
+
+.right-frame {
+    height: 100%;
+    width: 60%;
+    left: 40%;
+    background-color: white;
+    position: absolute;
+}
+.right-frame-otp {
+    height: 100%;
+    width: 100%;
+    left: 0%;
+    background-color: white;
+    position: absolute;
+}
+
+.img-home-ad1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    top: 30%
+}
+
+.lpf-label {
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    position: absolute;
+
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    word-wrap: break-word;
+
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.login-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 75%;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 20px;
+    color: black;
+}
+
+.login-frame h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: left;
+
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+.login-frame .flash-Message {
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: left;
+    top:5px;
+    position: absolute;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: red;
+}
+.login-frame .textbox {
+    position: relative;
+}
+
+.login-frame .textbox input:hover {
+    border-color: #05153F;
+}
+
+
+.login-frame .textbox input:focus {
+    border-color: #05153F;
+}
+.login-frame .textbox input {
+    width: 100%;
+    padding: 10px 0;
+    color: gray;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+
+}
+
+.button {
+    width: 60%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid gray;
+    color: gray;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+
+}
+
+.buttonLogin {
+    background-color: transparent;
+    color: gray;
+    border: 2px solid gray;
+}
+
+.buttonLogin:hover {
+    background-color: #05153F;
+    color: white;
+    border: 2px solid #05153F;
+}
+.buttonLogin:focus {
+    background-color: #05153F;
+    color: white;
+    border: 2px solid #05153F;
+}
+
+.buttonRegister {
+    background-color: #05153F;
+    color: white;
+    border: 2px solid #05153F;
+    width: 100px;
+    height: 40px;
+
+}
+
+.register {
+    width: 100%;
+    top: 30px;
+    position: relative;
+
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+
+}
+
+.registerLink:link {
+    color: #05153F;
+    text-decoration: none;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.registerLink:visited {
+    color: #05153F;
+    text-decoration: none;
+}
+
+.registerLink:hover {
+    color: #05153F;
+    text-decoration: underline;
+}
+
+
+.forgotPassword {
+    width: 100%;
+    top: 30px;
+    position: relative;
+
+    color: black;
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display:none;
+}
+
+.forgotPasswordLink:link {
+    color: #05153F;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.forgotPasswordLink:visited {
+    color: #05153F;
+    text-decoration: none;
+}
+
+.forgotPasswordLink:hover {
+    color: #05153F;
+    text-decoration: underline;
+}
+.adminLogin{
+    width: 100%;
+    right:0px;
+    bottom: 5px;
+    position: absolute;
+
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+}
+.cancel {
+    width: 100%;
+    top: 30px;
+    position: relative;
+
+    display: inline-block;
+    text-align: center;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+
+}
+
+.cancelLink:link {
+    color: #05153F;
+    text-decoration: none;    
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.cancelLink:visited {
+    color: #05153F;
+    text-decoration: none;
+}
+
+.cancelLink:hover {
+    color: #05153F;
+    text-decoration: underline;
+}

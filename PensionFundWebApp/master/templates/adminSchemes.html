@@ -1,0 +1,173 @@
+{% extends "adminLayout.html" %}
+{% block script %}
+<script>
+    var currentModule;
+    var schemesJson = JSON.parse('{{schemesJson | safe}}');
+    window.onload = function () {
+        document.getElementById('{{menuItem}}').querySelector("a").style.background = "aliceblue";
+        document.getElementById('{{menuItem}}').querySelector("a").style.color = "#05153F";
+        document.getElementById('{{menuItem}}').querySelector("a").style.fontStyle = "italic";
+
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+        document.getElementById('divFAQAdd').style.display = "none";
+
+        setSchemesList();
+    }
+    var loadFile = function (event) {
+        var image = document.getElementById('schemePhoto-view');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    function setSchemesList() {
+        var listTags = "";
+        if (schemesJson.length > 0) {
+            document.getElementById('scheme-list').style.display = "block";
+            document.getElementById('noData').style.display = "none";
+        }
+        else {
+            document.getElementById('noData').style.display = "block";
+            document.getElementById('scheme-list').style.display = "none";
+        }
+        for (var i = 0; i < schemesJson.length; i++) {
+            listTags = listTags +
+                "<li class='schemes'>" +
+                "<label><b>" + schemesJson[i]["schemeHeading"] + "</b></label>" +
+                "<button onclick='editFAQ(this.id)' class='button buttonFAQEdit' id='" + schemesJson[i]["schemeId"] + "'>Edit</button>" +
+                "<form action='{{ url_for('adminSchemes') }}' method='POST' class='FAQForm'>" +
+                "<input name='schemeId' type=hidden value=" + schemesJson[i]["schemeId"] + ">" +
+                "<input type='hidden' name='flowType' value='delete'>" +
+                "<input type='submit' class='button buttonFAQDelete' name='submit' value='Delete'></form>" +
+                "</li>";
+        }
+        document.getElementById("faqListAdmin").innerHTML = listTags;
+
+    }
+    function editFAQ(FAQId) {
+        document.getElementById('divTermsEdit').style.display = "block";
+        document.getElementById('divFAQAdd').style.display = "none";
+        document.getElementById('divTerms').style.display = "none";
+
+        setEditFAQ(FAQId);
+    }
+    function setEditFAQ(FAQId) {
+        var listTags = "";
+
+        for (var i = 0; i < schemesJson.length; i++) {
+            if (schemesJson[i]["schemeId"] == FAQId) {
+                document.getElementById('schemeHeadingEdit').value = schemesJson[i]["schemeHeading"];;
+                document.getElementById('schemeDescriptionEdit').value = schemesJson[i]["schemeDescription"];
+                document.getElementById('schemePhoto-view').src = "data:image/png;charset=utf-8;base64,"+schemesJson[i]["schemePhoto"];
+                document.getElementById('schemeId').value = schemesJson[i]["schemeId"];
+            }
+        }
+    }
+    function addFAQ() {
+        document.getElementById('divFAQAdd').style.display = "block";
+        document.getElementById('divTerms').style.display = "none";
+        document.getElementById('divTermsEdit').style.display = "none";
+        document.getElementById('module').value = currentModule;
+    }
+    function cancelAddFAQ() {
+        document.getElementById('divFAQAdd').style.display = "none";
+        document.getElementById('divTerms').style.display = "block";
+        document.getElementById('divTermsEdit').style.display = "none";
+    }
+</script>
+{% endblock script%}
+{% block content %}
+<div class="main-body-admin">
+    <label class="welcomeLabelAdmin">Hello, Admin!</label>
+    <div class="sub-body-frame-admin">
+        <div class="adminframe adminframe1">
+            <div class="dashboard-frame">
+                <div class="customer-mngt-frame">
+                    <label class="breadcrumb">Products Management >> New Schemes</label>
+                    <div id="divTerms" class="divTerms">
+                        <div id="faqAdmin" class="faqAdmin">
+                            <div id="scheme-list" class="scheme-list">
+                                <label>Schemes</label>
+                                <ul id="faqListAdmin" class="faqListAdmin"></ul>
+                                <button class="button add-FAQ-button" onclick="addFAQ()">Add a new Scheme</button>
+                            </div>
+                            <div id="noData" class="noData">
+                                <label class="noDataLabel"
+                                    style="left:50%;top:50%;transform: translate(-50%,-50%);position:absolute">No
+                                    schemes are available. Please add one.</label>
+                                <button class="button add-FAQ-button" onclick="addFAQ()">Add a new Scheme</button>
+                            </div>
+                        </div>
+                        <!---<button id="edit-TandC-Button" class="button edit-TandC-Button" onclick="oneEditTermsClick()">Edit</button>-->
+                    </div>
+                    <div id="divFAQAdd" class="divFAQAdd">
+                        <label
+                            style="font-family: 'Ubuntu-Regular';font-style: normal;font-weight: 200;font-size: 16px; line-height: 24px;color: #05153F; top:10px;position: absolute">Add
+                            a new scheme</label>
+                        <form name="addFAQDetails" action="{{ url_for('adminSchemes') }}" method="POST"
+                            enctype="multipart/form-data">
+                            <ul class="faq-details-table">
+                                <li>
+                                    <label class="labelHeading">Scheme Heading</label><br>
+                                    <input type="text" id="schemeHeading" name="schemeHeading" value=""
+                                        placeholder="Enter Scheme Heading">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Scheme Description</label><br>
+                                    <input type="text" id="schemeDescription" name="schemeDescription" value=""
+                                        placeholder="Enter Scheme Description">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Scheme Photo</label><br>
+                                    <input type="file" id="schemePhoto" name="schemePhoto" value=""
+                                        placeholder="Select a photo">
+                                </li>
+                                <input type="hidden" value="add" name="flowType">
+
+                            </ul>
+                            <input type="submit" class="button addFAQButton" value="Add a new scheme">
+                        </form>
+                        <button onclick="cancelAddFAQ()" class="button cancelAddFAQButton">Cancel</button>
+                    </div>
+                    <div id="divTermsEdit" class="divTermsEdit">
+                        <label
+                            style="font-family: 'Ubuntu-Regular';font-style: normal;font-weight: 200;font-size: 16px; line-height: 24px;color: #05153F; top:10px;position: absolute">Edit
+                            scheme</label>
+                        <form name="editSchemeDetails" action="{{ url_for('adminSchemes') }}" method="POST" enctype="multipart/form-data">
+                            <ul class="faq-details-table">
+                                <li>
+                                    <label class="labelHeading">Scheme Heading</label><br>
+                                    <input type="text" id="schemeHeadingEdit" name="schemeHeading" value=""
+                                        placeholder="Enter scheme heading">
+                                </li>
+                                <li>
+                                    <label class="labelHeading">Scheme Description</label><br>
+                                    <input type="text" id="schemeDescriptionEdit" name="schemeDescription" value=""
+                                        placeholder="Enter scheme description">
+                                </li>
+                                
+                                <input type="hidden" value="edit" name="flowType">
+                                <input type="hidden" id="schemeId" value="" name="schemeId">
+                            </ul>
+                            <div class="schemePhoto-frame">
+                                <div class="schemePhoto">
+                                    <img id="schemePhoto-view" >
+                                </div>
+                                <div class="choose-image">
+                                    <label for="select-file">
+                                        Select Image                                                      
+                                    <input id="select-file" type="file" name="schemePhotoEdit" accept="image/png, image/jpeg,image/jpg"
+                                        onchange="loadFile(event)">
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="submit" class="button addFAQButton" value="Edit scheme">
+                            
+                        </form>
+                        
+                        <button onclick="cancelAddFAQ()" class="button cancelAddFAQButton">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

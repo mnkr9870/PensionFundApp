@@ -1,0 +1,1118 @@
+.flash-Message{
+    top:50%;
+    left:50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 20px;
+    color: green;
+    display: block;
+    animation-name: myAnimation;
+    animation-duration: 4000ms;
+    animation-fill-mode: forwards;
+}
+
+
+  @keyframes myAnimation{
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0.5;
+    }
+    100%{
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:0;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-right: 0;
+    border-left: 20px solid #ffffff;
+    display: none;
+  }
+.main-body-admin {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.welcomeLabelAdmin {
+    text-align: left;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+
+.sub-body-frame-admin {
+    top: 60px;
+    left:0px;
+    right:10px;
+    bottom: 0px;
+    display: flex;
+    position: absolute;
+}
+
+.adminframe {
+    float: left;
+    background-color: transparent;
+}
+
+
+.adminframe1 {    
+    width:100%
+}
+
+
+.dashboard-frame{
+    top:10px;
+    height:100%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+
+.customer-mngt-frame{
+    width:100%;
+    height: 100%;
+    position: absolute;
+}
+
+.customer-mngt-frame .breadcrumb{
+    top:10px;
+    left:10px;
+    right:10px;
+    position: absolute;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 20px;
+    color: #05153F;
+    
+    border-bottom: 1px solid #05153F;
+
+}
+.customer-mngt-frame .div1{
+    top:30px;
+    left:10px;
+    position: absolute;
+    right:0px;
+    height:95%;
+    display: block;
+
+}
+.customer-mngt-frame .divTerms{
+    top:30px;
+    left:10px;
+    position: absolute;
+    right:0px;
+    height:95%;
+    display: block;
+}
+
+.customer-mngt-frame .divTermsEdit{
+    top:30px;
+    left:10px;
+    position: absolute;
+    right:0px;
+    height:95%;
+    display: block;
+
+}
+.customer-mngt-frame .divFAQAdd{
+    top:30px;
+    left:10px;
+    position: absolute;
+    right:0px;
+    height:95%;
+    display: block;
+
+}
+
+.customer-mngt-frame .textbox {
+    top:20px;
+    position: relative;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color:#000
+}
+
+.customer-mngt-frame .textbox input {
+    width: 100%;
+    height: 35px;
+    top:30px;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color:#000;
+    position: absolute;
+    left: 0px;
+
+}
+
+.customer-mngt-frame .username{
+    width:30%;
+    top:30px;
+    left:0px;
+    position: relative;
+}
+
+.customer-mngt-frame .sectionHeader{
+    top:20px;
+    left:0px;
+    position: relative;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    color:#000
+}
+
+.info{
+    bottom: 0px;
+    height: 40px;
+    width: 60%;
+    text-align: center;
+    position: absolute;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: gray;
+    left: 0%;
+}
+.iButton{
+    border-radius: 50%;
+    border: 2px solid #05153F;
+    background-color: #05153F;
+    color: #ffffff;
+    position: absolute;
+    left: 0px;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.iButton label{
+    top: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+}
+.infoText{
+    position : absolute;
+    left : 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.button {
+    width: 20%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid gray;
+    color: gray;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+    
+    position: absolute;
+
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+
+}
+
+.buttonSubmit {
+    left: 120%;
+    top:30px;
+    background-color: #05153F;
+    color: #ffffff;
+    border: 2px solid #05153F;
+}
+
+.buttonSubmit:hover {
+    background-color: #ffffff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+.buttonSubmit:focus {
+    background-color: #ffffff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.customer-personal-details{
+    top:140px;
+    height: 60%;
+    right:10px;
+    left:0px;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    display: none;
+}
+.customer-No-ben-details{
+    top:140px;
+    height: 60%;
+    right:10px;
+    left:0px;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    display: none;
+}
+.ben-Header-Message{
+    position:absolute;
+    left:50%;
+    transform :translateX(-50%);
+    top:150px;
+    width:100%;
+    text-align: center;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+.personal-details-box {
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 100%;
+    left: 0px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline-start: 0px;
+}
+
+.personal-details-box li {
+    height: 100px;
+    display: block;
+    top: 10px;
+}
+
+.personal-details-box li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.personal-details-box li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 10px;
+}
+
+
+.personal-details-box input {
+    width: 80%;
+    
+    height: 40px;
+    
+    border: 2px solid gray;
+    border-radius: 5px;
+    
+    background: transparent;
+    padding-left: 10px;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    top: 20px;
+    position: relative;
+    left: 10px;
+
+}
+.notify-Button{
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
+}
+
+.notify-Button:hover {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.notify-Button:focus {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Button {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+}
+
+.update-Details-Button:hover {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Button:focus {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+.update-Details-Form-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 25%;
+    position: absolute;
+}
+
+.update-Details-Form-Button:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Form-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.edit-TandC-Form-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    right: 25%;
+    position: absolute;
+}
+
+.edit-TandC-Form-Button:hover,.edit-TandC-Form-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.edit-TandC-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.edit-TandC-Button:hover,.edit-TandC-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.editContactButton{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.editContactButton:hover,.editContactButton:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.saveContactButton{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 25%;
+    position: absolute;
+}
+
+.saveContactButton:hover,.saveContactButton:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.cancelContactButton{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    right: 25%;
+    position: absolute;
+}
+.cancelContactButton:hover,.cancelContactButton:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.cancel-TandC-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    left: 25%;
+    position: absolute;
+}
+
+.cancel-TandC-Button:hover,.cancel-TandC-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+
+.ben-table{
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0px;
+    bottom: 100px;
+    list-style: none;
+    overflow-y: scroll;
+}
+.ben-table li {
+    height: 50px;
+    width:95%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    border-bottom: 2px solid;
+    position: relative
+}
+
+.ben-table  .top-Row{
+    top:0px;
+    height: 50%;
+    width: 100%;
+    display: block;
+    padding-top: 10px;
+}
+
+.ben-table  .lblName{
+    left:0px;
+    width: 50%;    
+    display: block;
+    position: absolute;   
+    
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #05153F;
+}
+.ben-table  .lblRelation{
+    right:20%;
+    width: 50%;    
+    display: block;
+    position: absolute; 
+    text-align: right;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: gray;
+}
+.ben-table .percentage{
+    right:5%;
+    width: 50%;    
+    display: block;
+    position: absolute; 
+    text-align: right;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: gray;
+}
+.delete-Ben-Form-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 10%;
+    bottom: 20px;
+    right: 0%;
+    top:50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.delete-Ben-Form-Button:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.delete-Ben-Form-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.textArea{
+    width: 98%;
+    height: 70%;
+    top: 40px;
+    position: relative;
+}
+
+.textArea-TandC{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+}
+
+.supportdataAdmin{
+    text-align: left;
+    height: 80%;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    overflow-y: scroll;
+    background-color: white;
+    top: 20px;
+    position: relative;
+}
+
+.sectionSubHeadingAdmin{
+    width:95%;
+    left:20px;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: gray;
+    position: relative;
+    top: 10px;
+}
+
+
+
+.contact-details-table {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 70%;
+    left: 0px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline-start: 12px;
+}
+
+.contact-details-table li {
+    height: 75px;
+    display: block;
+    top: 10px;
+}
+
+.contact-details-table li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.contact-details-table li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+
+.contact-details-table li input {
+    width: 60%;
+    padding: 10px 0;
+    height: 20px;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+    top:20px;
+    left:10px;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color:#05153F;
+    position:relative
+}
+
+.faqAdmin .textbox {
+    position: relative;
+}
+
+.faqAdmin .module{
+    width: 30%;
+    padding: 10px 0;
+    color: gray;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #05153F;;
+    left: 10px;
+    position: absolute;
+    top: 30px;
+}
+.faqAdmin .module:hover,.module:focus {
+    border-color: #05153F;
+}
+
+.question{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
+    height:100px;
+}
+.question label{
+    width:70%
+}
+.schemes{
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
+    height:100px;
+}
+
+.faqListAdmin{
+    list-style: none;
+}
+
+
+.buttonFAQEdit{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 10%;
+    right: 20%;
+    position: absolute;
+}
+
+.buttonFAQEdit:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.buttonFAQEdit:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.buttonFAQDelete{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 10%;
+    right: 0%;
+    position: absolute;
+}
+
+.buttonFAQDelete:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.buttonFAQDelete:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.add-FAQ-button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 30%;
+    bottom:10px;
+    left:50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+.scheme-list{
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    bottom: 0px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #05153F;
+    display: block;
+}
+.noData{
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    bottom: 0px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #05153F;
+    display: block;
+}
+.FAQs-list{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    bottom: 0px;
+
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #05153F;
+    display: none;
+}
+
+.faqListAdmin{
+    position: absolute;
+    list-style: auto;
+    left: 0px;
+    right: 30px;
+    height: 75%;
+    overflow-y: scroll;
+}
+
+.FAQForm{
+    top: -20px;
+    position: relative;
+    width: 100%;
+    right: 10px;
+}
+
+
+
+.faq-details-table {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 70%;
+    left: 0px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline-start: 12px;
+}
+
+.faq-details-table li {
+    height: 75px;
+    display: block;
+    top: 10px;
+}
+
+.faq-details-table li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.faq-details-table li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+
+.faq-details-table li input {
+    width: 60%;
+    padding: 10px 0;
+    height: 20px;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+    top:20px;
+    left:10px;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color:#05153F;
+    position:relative
+}
+
+.cancelAddFAQButton{
+
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    left: 25%;
+    bottom:10px;
+    position: absolute;
+}
+
+.cancelAddFAQButton:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.cancelAddFAQButton:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.addFAQButton{
+
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom:10px;
+    right: 25%;
+    position: absolute;
+}
+
+.addFAQButton:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.addFAQButton:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+
+.schemePhoto-frame {
+    width: 30%;
+    right: 0%;
+    position: absolute;
+    height: 100%;
+}
+
+.schemePhoto {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.schemePhoto img{
+    object-fit: fill;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+
+.choose-image{
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width:100%;
+    height:40px;
+    position: absolute;
+    line-height: 30px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.choose-image label{
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    cursor: pointer;
+}
+.choose-image input{
+    display: none;
+}

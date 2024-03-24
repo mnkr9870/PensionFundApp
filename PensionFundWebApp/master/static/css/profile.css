@@ -1,0 +1,204 @@
+.personal-details {
+    top: 10px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    display: block;
+}
+
+.update-personal-details{
+    top: 10px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    display: none;
+}
+
+.personal-details-box {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    position: absolute;
+    height: 90%;
+    border-radius: 10px;
+    width: 70%;
+    left: 0px;
+    list-style: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.personal-details-box li {
+    height: 130px;
+    display: block;
+    top: 20px;
+}
+
+.personal-details-box li .labelHeading {
+    width: 50%;
+    left: 10px;
+
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.personal-details-box li .labelValue {
+    width: 50%;
+    left: 10px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.profile-image-frame {
+    width: 30%;
+    right: 0%;
+    position: absolute;
+    height: 100%;
+}
+
+.profile-image {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.profile-image img{
+    object-fit: fill;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+
+ .button {
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 30px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+
+}
+
+.update-Details-Button {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
+}
+
+.update-Details-Button:hover {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Button:focus {
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Form-Button{
+    background-color: #fff;
+    color: #05153F;
+    border: 2px solid #05153F;
+    width: 20%;
+    bottom: 20px;
+    right: 25%;
+    position: absolute;
+}
+
+.update-Details-Form-Button:hover {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.update-Details-Form-Button:focus {
+    background-color: #05153F;
+    color: #fff;
+    border: 2px solid #05153F;
+}
+
+.personal-details-box input {
+    width: 80%;
+    
+    height: 40px;
+    
+    border: 2px solid gray;
+    border-radius: 5px;
+    
+    background: transparent;
+    padding-left: 10px;
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    top: 20px;
+    position: relative;
+    left: 10px;
+
+}
+
+.choose-image{
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width:100%;
+    height:40px;
+    position: absolute;
+    line-height: 30px;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.choose-image label{
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    cursor: pointer;
+}
+.choose-image input{
+    display: none;
+}

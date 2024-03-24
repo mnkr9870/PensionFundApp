@@ -1,0 +1,232 @@
+.main-body {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.welcomeLabel {
+    text-align: left;
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+    color: #05153F;
+}
+
+
+.sub-body-frame {
+    top: 60px;
+    left:0px;
+    right:10px;
+    bottom: 10px;
+    display: flex;
+    position: absolute;
+}
+
+.frame {
+    float: left;
+    background-color: transparent;
+}
+
+
+.frame1 {    
+    width:40%
+}
+.frame3 {    
+    width:60%;
+    padding-left: 20px;
+}
+
+.pension-funds-frame{
+    top:10px;
+    height:100%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+.pension-contribution-frame{
+    top:30px;
+    height:50%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+
+.pension-payments-frame{
+    top:10px;
+    height:94.5%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+
+.latest-news-frame{
+    top:10px;
+    height:100%;
+    position:relative;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid gray;
+}
+
+.sectionHeading{
+    width:90%;
+    left:50%;
+    transform: translateX(-50%);
+    border-bottom: 2px solid black;
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.labelHeading {
+    width: 50%;
+    left: 25px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: #05153F;
+    position: relative;
+    top: 10px;
+}
+
+.labelValue {
+    width: 50%;
+    left: 25px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.pensionFund{
+    color: green;
+}
+.pension-details-table{
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+    bottom: 0px;
+}
+
+.pension-details-table li {
+    height: 70px;
+    width: 100%;
+    display: block;
+    top: 100px;
+    padding-top: 30px;
+}
+
+.latestNews{
+    width: 50%;
+    left: 30px;
+
+    text-align: left;
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: gray;
+    position: relative;
+    top: 30px;
+}
+
+
+.news-table{
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+    bottom: 0px;
+    list-style: none;
+}
+.news-table li {
+    height: 80px;
+    width: 90%;
+    display: block;
+    left:50%;
+    transform: translateX(-50%);
+    
+    border-bottom: 2px solid #05153F;
+    position: relative
+}
+
+.news-table  .top-Row{
+    top:0px;
+    height: 50%;
+    width: 95%;
+    display: block;
+    padding-top: 10px;
+}
+.news-table  .bottom-Row{
+    bottom:0px;
+    height: 40%;
+    width: 95%;
+    display: block;
+}
+
+.news-table  .lblHeadline{
+    left:10px;
+    width: 100%;    
+    display: block;
+    position: absolute;   
+    
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #05153F;
+}
+
+.news-table  .lblLink{
+    padding-top: 5px;
+    left:10px;
+    width: 50%;    
+    display: block;
+    position: absolute;  
+    
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 20px;
+    color: blue;
+    text-decoration: none;
+}

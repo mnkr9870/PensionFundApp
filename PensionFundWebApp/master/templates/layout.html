@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/layout.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/dashboard.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/profile.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/pensionDetails.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/payments.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/beneficiaries.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/pensionCal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/support.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            document.getElementById('{{menuItem}}').style.borderLeft = '5px solid #ffffff';
+            hideChatBot();
+        }
+
+
+
+    </script>
+    {% block script %}
+    {% endblock script%}
+</head>
+
+<body style="background-color: #E8EAEE;">
+    <div id="alertMessagesFrame" class="alertMessagesFrame">
+        <div id="alertMessage" class="alertMessage">
+            <label class="messageLabel" id="alert-message"></label>
+            <button class="button buttonOK">OK</button>
+        </div>
+        <div id="confirmMessage" class="alertMessage">
+            <label class="messageLabel" id="alert-message"></label>
+            <button class="button buttonYes">Yes</button>
+            <button class="button buttonNo">No</button>
+        </div>
+    </div>
+    <div class="hamburger-menu">
+        <div class="app-details">
+            <label class="app-name-label">LPF</label>
+        </div>
+        <ul class="main-menu-box">
+            <li id="menu-home">
+                <a class="ham-menu-item" href="{{ url_for('dashboard') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_home.png')}}" />
+                    <label class="menu-label">Home</label>
+                </a>
+            </li>
+            <li id="menu-pension">
+                <a class="ham-menu-item" href="{{ url_for('pensionDetails') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_pension.png')}}" />
+                    <label class="menu-label">Pension Details</label>
+                </a>
+            </li>
+            <li id="menu-payments">
+                <a class="ham-menu-item" href="{{ url_for('payments') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_payments.png')}}" />
+                    <label class="menu-label">Recent Payments</label>
+                </a>
+            </li>
+            <li id="menu-profile">
+                <a class="ham-menu-item" href="{{ url_for('profile') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_profile.png')}}" />
+                    <label class="menu-label">Personal Profile</label>
+                </a>
+            </li>
+            <li id="menu-ben">
+                <a class="ham-menu-item" href="{{ url_for('beneficiaries') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_ben.png')}}" />
+                    <label class="menu-label">Manage Beneficiaries</label>
+                </a>
+            </li>
+            <li id="menu-cal">
+                <a class="ham-menu-item" href="{{ url_for('pensionCal') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_cal.png')}}" />
+                    <label class="menu-label">Pension Calculator</label>
+                </a>
+            </li>
+            <li id="menu-schemes">
+                <a class="ham-menu-item" href="{{ url_for('schemes') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_news.png')}}" />
+                    <label class="menu-label">Latest Schemes</label>
+                </a>
+            </li>
+            <li id="menu-support">
+                <a class="ham-menu-item" href="{{ url_for('supportContactInfo') }}">
+                    <img class="img-menu" src="{{url_for('static', filename='menu_support.png')}}" />
+                    <label class="menu-label">Support</label>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="right-frame">
+        <div class="main-frame">
+            <div class="logout-frame">
+                <form>
+                    <a class="button buttonLogout" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </form>
+            </div>
+
+            {% block content %}
+            {% endblock content%}
+        </div>
+        <div class="footer-menu">
+            <ul class="footer-menu-box">
+                <li><a class="footer-menu-item" href="{{ url_for('supportPrivacy') }}">Privacy Policy</a></li>
+                <li><a class="footer-menu-item" href="{{ url_for('supportCookie') }}">Cookie Policy</a></li>
+                <li><a class="footer-menu-item" href="{{ url_for('supportTerms') }}">Terms & Conditions</a></li>
+                <li><a class="footer-menu-item" href="{{ url_for('supportFAQ') }}">FAQs</a></li>
+                <li><a class="footer-menu-item" href="{{ url_for('supportContactInfo') }}">Contact Us</a></li>
+            </ul>
+            <div id="chatbotButton" class="chatbot" onclick="showChatBot()">
+                <img src="{{url_for('static', filename='chatbot.png')}}" class="chatbotImage">
+                <label class="chatBotText">Hi! I'm Lexi.</label>
+            </div>
+        </div>
+        <div id="chatbox-Frame" class="chatbox-Frame">
+            <div
+                style="position:absolute;top:0px;height:50px;left:0px;width:100%;border-bottom: 2px solid white;background-color: transparent;border-radius: 10px 10px 0px 0px;">
+                <img src="{{url_for('static', filename='chatbotWhite.png')}}" class="chatbotImage">
+                <label class="chatBotText chatBotText1">Hi! I'm Lexi.</label>
+                <img src="{{url_for('static', filename='close.png')}}" class="closeImage" onclick="hideChatBot()">
+            </div>
+            <div id="chatbox" class="chatbox"
+                style="top:50px;bottom:50px;position:absolute;width:100%;left:0px;background-color: transparent;overflow-y: scroll;overflow-x: hidden;">
+                <p class="botMessage">
+                    <span>Hello there!</span>
+                </p>
+            </div>
+            <div id="userInput"
+                style="height:50px;bottom:0px;position:absolute;width:100%;left:0px;border-top: 2px solid white;background-color: transparent;border-radius: 0px 0px 10px 10px;">
+                <input id="textInput" type="text" name="userMessageInput" placeholder="Type something..."
+                     />
+            </div>
+            <script>
+                function getChatBotResponse() {
+                    var userInputText = $("#textInput").val();
+                    var userMessageElement = '<p class="userMessage"><span>' + userInputText + "</span></p>";
+                    $("#textInput").val("");
+                    $("#chatbox").append(userMessageElement);
+                    document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+                    document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+                    $.get("/getChatBot", { userMessageInput: userInputText }).done(function (data) {
+                        var botMessageElement = '<p class="botMessage"><span>' + data + "</span></p>";
+                        $("#chatbox").append(botMessageElement);
+                        document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+                        document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+                    });
+                }
+                $("#textInput").keypress(function (e) {
+                    if (e.which == 13) {
+                        getChatBotResponse();
+                    }
+                });
+                function showChatBot() {
+                    document.getElementById('chatbox-Frame').style.display = 'block';
+                }
+                function hideChatBot() {
+                    document.getElementById('chatbox-Frame').style.display = 'none';
+                    $("#chatbox").empty();
+                    var botMessageElement = '<p class="botMessage"><span>' + 'Hello!' + "</span></p>";
+                        $("#chatbox").append(botMessageElement);
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
