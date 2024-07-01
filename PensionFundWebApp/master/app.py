@@ -16,14 +16,14 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 app.secret_key = 'romeo'
 mail= Mail(app)
-app.config['SECRET_KEY'] = b'\x98\x1d\x98\xe4mgw:\xcb0\xc9\xd2\xb8\xdf\xe0Ci\x19\xfd\xad\xc2\np\xed'
+app.config['SECRET_KEY'] = "ADD YOUR KEY"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pension.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER']='\static'
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'info.leicester.pension@gmail.com'
-app.config['MAIL_PASSWORD'] = 'kzsuchhghjrklntq'
+app.config['MAIL_USERNAME'] = 'ADD YOUR MAIL ID'
+app.config['MAIL_PASSWORD'] = 'ADD YOUR PASSWORD'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
